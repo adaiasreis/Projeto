@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>548</width>
-    <height>402</height>
+    <height>432</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -52,7 +52,7 @@
           </widget>
          </item>
          <item row="0" column="1">
-          <widget class="QLineEdit" name="lineEdit"/>
+          <widget class="QLineEdit" name="campNome"/>
          </item>
         </layout>
        </item>
@@ -86,13 +86,13 @@
              </widget>
             </item>
             <item row="1" column="0">
-             <widget class="QLineEdit" name="lineEdit_2"/>
+             <widget class="QLineEdit" name="campRgn"/>
             </item>
             <item row="1" column="1">
-             <widget class="QLineEdit" name="lineEdit_3"/>
+             <widget class="QLineEdit" name="campRgo"/>
             </item>
             <item row="1" column="2">
-             <widget class="QLineEdit" name="lineEdit_4"/>
+             <widget class="QLineEdit" name="campRgd"/>
             </item>
            </layout>
           </item>
@@ -129,13 +129,13 @@
              </widget>
             </item>
             <item row="1" column="0">
-             <widget class="QLineEdit" name="lineEdit_6"/>
+             <widget class="QLineEdit" name="campChn"/>
             </item>
             <item row="1" column="1">
-             <widget class="QLineEdit" name="lineEdit_5"/>
+             <widget class="QLineEdit" name="campChc"/>
             </item>
             <item row="1" column="2">
-             <widget class="QLineEdit" name="lineEdit_7"/>
+             <widget class="QLineEdit" name="campChd"/>
             </item>
            </layout>
           </item>
@@ -152,7 +152,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEdit_8"/>
+          <widget class="QLineEdit" name="campCpf"/>
          </item>
          <item>
           <widget class="QLabel" name="label_11">
@@ -162,14 +162,14 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEdit_9"/>
+          <widget class="QLineEdit" name="campTelefone"/>
          </item>
         </layout>
        </item>
        <item>
         <layout class="QGridLayout" name="gridLayout_3">
          <item row="0" column="3">
-          <widget class="QLineEdit" name="lineEdit_10"/>
+          <widget class="QLineEdit" name="campEmail"/>
          </item>
          <item row="0" column="0">
           <widget class="QLabel" name="label_10">
@@ -179,7 +179,7 @@
           </widget>
          </item>
          <item row="0" column="1">
-          <widget class="QLineEdit" name="lineEdit_11"/>
+          <widget class="QLineEdit" name="campDnasc"/>
          </item>
          <item row="0" column="2">
           <widget class="QLabel" name="label_12">
@@ -200,7 +200,7 @@
           </widget>
          </item>
          <item row="0" column="1">
-          <widget class="QLineEdit" name="lineEdit_12"/>
+          <widget class="QLineEdit" name="campEndereco"/>
          </item>
          <item row="1" column="0">
           <widget class="QLabel" name="label_14">
@@ -210,7 +210,48 @@
           </widget>
          </item>
          <item row="1" column="1">
-          <widget class="QLineEdit" name="lineEdit_13"/>
+          <widget class="QLineEdit" name="campNmae"/>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QGridLayout" name="gridLayout_6">
+         <item row="0" column="2">
+          <widget class="QPushButton" name="b_limparCampos">
+           <property name="text">
+            <string>Limpar Campos</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="3">
+          <widget class="QPushButton" name="b_salvar">
+           <property name="text">
+            <string>Salvar</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <spacer name="horizontalSpacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="0" column="0">
+          <widget class="QPushButton" name="b_excluir">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string>Excluir</string>
+           </property>
+          </widget>
          </item>
         </layout>
        </item>

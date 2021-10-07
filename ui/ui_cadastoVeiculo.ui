@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>p_cadastroVeiculo</class>
+ <widget class="QWidget" name="p_cadastroVeiculo">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>554</width>
+    <height>274</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Cadastro de Veículos</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_2">
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <layout class="QGridLayout" name="gridLayout_4">
+       <item row="0" column="0">
+        <widget class="QLabel" name="label">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>14</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Cadastro de Veículo&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QGridLayout" name="gridLayout_9">
+       <item row="0" column="1">
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string>Marca</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="3">
+        <widget class="QLabel" name="label_17">
+         <property name="text">
+          <string>Modelo</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="6">
+        <widget class="QLineEdit" name="campCategoria"/>
+       </item>
+       <item row="0" column="6">
+        <widget class="QLabel" name="label_9">
+         <property name="text">
+          <string>Categoria</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLineEdit" name="campMarca"/>
+       </item>
+       <item row="1" column="3">
+        <widget class="QLineEdit" name="campModelo"/>
+       </item>
+       <item row="0" column="5">
+        <widget class="QLabel" name="label_18">
+         <property name="text">
+          <string>Tipo</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="5">
+        <widget class="QLineEdit" name="campTipo"/>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_3">
+         <property name="text">
+          <string>Ano de Fabricação</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="2">
+        <widget class="QLineEdit" name="campChassi"/>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLineEdit" name="campPlaca"/>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLabel" name="label_4">
+         <property name="text">
+          <string>Placa</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="2">
+        <widget class="QLabel" name="label_5">
+         <property name="text">
+          <string>Chassi</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="3">
+        <widget class="QLabel" name="label_19">
+         <property name="text">
+          <string>RENAVAM</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="3">
+        <widget class="QLineEdit" name="campRenavam"/>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLineEdit" name="campAnoF"/>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QGridLayout" name="gridLayout_7">
+       <item row="1" column="5">
+        <widget class="QLineEdit" name="campCilindradas"/>
+       </item>
+       <item row="1" column="3">
+        <widget class="QLineEdit" name="campPotencia"/>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLineEdit" name="campCapPass"/>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLabel" name="label_6">
+         <property name="text">
+          <string>Capacidade de Passageiros</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="3">
+        <widget class="QLabel" name="label_7">
+         <property name="text">
+          <string>Potência</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="5">
+        <widget class="QLabel" name="label_8">
+         <property name="text">
+          <string>Cilindradas do Motor</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QGridLayout" name="gridLayout_6">
+       <item row="0" column="0">
+        <widget class="QPushButton" name="b_excluir">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Excluir</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="3">
+        <widget class="QPushButton" name="b_salvar">
+         <property name="text">
+          <string>Salvar</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="2">
+        <widget class="QPushButton" name="b_limparCampos">
+         <property name="text">
+          <string>Limpar Campos</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
