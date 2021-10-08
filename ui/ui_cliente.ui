@@ -1,45 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>p_cadastroFuncionario</class>
- <widget class="QWidget" name="p_cadastroFuncionario">
+ <class>p_cadastroCliente</class>
+ <widget class="QWidget" name="p_cadastroCliente">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
     <width>548</width>
-    <height>403</height>
+    <height>432</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Cadastro de Funcionários</string>
+   <string>Cadastro de Clientes</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout_3">
+  <layout class="QVBoxLayout" name="verticalLayout_4">
    <item>
-    <layout class="QVBoxLayout" name="verticalLayout_2">
-     <item>
-      <layout class="QGridLayout" name="gridLayout_4">
-       <item row="0" column="0">
-        <widget class="QLabel" name="label">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>14</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Cadastro de Funcionários&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
+    <widget class="QLabel" name="label">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>14</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Cadastro de Clientes&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout_3">
      <item>
       <layout class="QFormLayout" name="formLayout">
        <item row="0" column="0">
@@ -69,15 +65,6 @@
             </property>
            </widget>
           </item>
-          <item row="1" column="1">
-           <widget class="QLineEdit" name="campRgo"/>
-          </item>
-          <item row="1" column="0">
-           <widget class="QLineEdit" name="campRgn"/>
-          </item>
-          <item row="1" column="2">
-           <widget class="QLineEdit" name="campRgd"/>
-          </item>
           <item row="0" column="1">
            <widget class="QLabel" name="label_4">
             <property name="text">
@@ -91,6 +78,58 @@
              <string>Data da Emissão</string>
             </property>
            </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLineEdit" name="campRgn"/>
+          </item>
+          <item row="1" column="1">
+           <widget class="QLineEdit" name="campRgo"/>
+          </item>
+          <item row="1" column="2">
+           <widget class="QLineEdit" name="campRgd"/>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="QGroupBox" name="groupBox_2">
+       <property name="title">
+        <string>CNH</string>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <layout class="QGridLayout" name="gridLayout_2">
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_8">
+            <property name="text">
+             <string>Numero</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLabel" name="label_6">
+            <property name="text">
+             <string>Categoria</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="2">
+           <widget class="QLabel" name="label_7">
+            <property name="text">
+             <string>Data da Emissão</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLineEdit" name="campChn"/>
+          </item>
+          <item row="1" column="1">
+           <widget class="QLineEdit" name="campChc"/>
+          </item>
+          <item row="1" column="2">
+           <widget class="QLineEdit" name="campChd"/>
           </item>
          </layout>
         </item>
@@ -123,16 +162,6 @@
      </item>
      <item>
       <layout class="QGridLayout" name="gridLayout_3">
-       <item row="0" column="1">
-        <widget class="QLineEdit" name="campDnasc"/>
-       </item>
-       <item row="0" column="2">
-        <widget class="QLabel" name="label_12">
-         <property name="text">
-          <string>Email</string>
-         </property>
-        </widget>
-       </item>
        <item row="0" column="3">
         <widget class="QLineEdit" name="campEmail"/>
        </item>
@@ -140,6 +169,16 @@
         <widget class="QLabel" name="label_10">
          <property name="text">
           <string>Data de Nascimento</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLineEdit" name="campDnasc"/>
+       </item>
+       <item row="0" column="2">
+        <widget class="QLabel" name="label_12">
+         <property name="text">
+          <string>Email</string>
          </property>
         </widget>
        </item>
@@ -170,73 +209,24 @@
       </layout>
      </item>
      <item>
-      <layout class="QGridLayout" name="gridLayout_7">
-       <item row="1" column="5">
-        <widget class="QLineEdit" name="campCarga"/>
-       </item>
-       <item row="1" column="3">
-        <widget class="QLineEdit" name="campSalario"/>
-       </item>
-       <item row="1" column="1">
-        <widget class="QLineEdit" name="campCargo"/>
-       </item>
-       <item row="0" column="1">
-        <widget class="QLabel" name="label_6">
-         <property name="text">
-          <string>Cargo</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="3">
-        <widget class="QLabel" name="label_7">
-         <property name="text">
-          <string>Salário</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="5">
-        <widget class="QLabel" name="label_8">
-         <property name="text">
-          <string>Carga Horária Semanal</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <layout class="QGridLayout" name="gridLayout_8">
-       <item row="0" column="0">
-        <widget class="QLabel" name="label_15">
-         <property name="text">
-          <string>Usuário</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="3">
-        <widget class="QLabel" name="label_16">
-         <property name="text">
-          <string>Senha</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="2">
-        <widget class="QLineEdit" name="campUsuario">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="4">
-        <widget class="QLineEdit" name="campSenha">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-     <item>
       <layout class="QGridLayout" name="gridLayout_6">
+       <item row="0" column="2">
+        <widget class="QPushButton" name="b_limparCampos">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Limpar Campos</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="3">
+        <widget class="QPushButton" name="b_salvar">
+         <property name="text">
+          <string>Salvar</string>
+         </property>
+        </widget>
+       </item>
        <item row="0" column="1">
         <spacer name="horizontalSpacer">
          <property name="orientation">
@@ -260,26 +250,30 @@
          </property>
         </widget>
        </item>
-       <item row="0" column="3">
-        <widget class="QPushButton" name="b_salvar">
-         <property name="text">
-          <string>Salvar</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="2">
-        <widget class="QPushButton" name="b_limparCampos">
-         <property name="text">
-          <string>Limpar Campos</string>
-         </property>
-        </widget>
-       </item>
       </layout>
      </item>
     </layout>
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>campNome</tabstop>
+  <tabstop>campRgn</tabstop>
+  <tabstop>campRgo</tabstop>
+  <tabstop>campRgd</tabstop>
+  <tabstop>campChn</tabstop>
+  <tabstop>campChc</tabstop>
+  <tabstop>campChd</tabstop>
+  <tabstop>campCpf</tabstop>
+  <tabstop>campTelefone</tabstop>
+  <tabstop>campDnasc</tabstop>
+  <tabstop>campEmail</tabstop>
+  <tabstop>campEndereco</tabstop>
+  <tabstop>campNmae</tabstop>
+  <tabstop>b_salvar</tabstop>
+  <tabstop>b_limparCampos</tabstop>
+  <tabstop>b_excluir</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuVeiculo">
+    <property name="title">
+     <string>Veículo</string>
+    </property>
+    <addaction name="separator"/>
+   </widget>
+   <widget class="QMenu" name="menuCliente">
+    <property name="title">
+     <string>Cliente</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuServicos">
+    <property name="title">
+     <string>Serviços</string>
+    </property>
+   </widget>
+   <addaction name="menuVeiculo"/>
+   <addaction name="menuCliente"/>
+   <addaction name="menuServicos"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionCadastrar">
+   <property name="text">
+    <string>Cadastrar</string>
+   </property>
+  </action>
+  <action name="actionCadastrar_2">
+   <property name="text">
+    <string>Cadastrar</string>
+   </property>
+   <property name="toolTip">
+    <string>Cadastro de Cliente</string>
+   </property>
+  </action>
+  <action name="actionCadastrar_3">
+   <property name="text">
+    <string>Cadastrar</string>
+   </property>
+   <property name="toolTip">
+    <string>Cadastro de Serviço</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
