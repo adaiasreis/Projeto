@@ -3,7 +3,7 @@ from PyQt5 import uic
 
 from clas.veiculo import Veiculo
 
-class CadVeiculo(QWidget):
+class CadVeiculos(QWidget):
     def __init__(self):
         super(). __init__()
         uic.loadUi("ui/ui_veiculo.ui", self)
@@ -11,7 +11,7 @@ class CadVeiculo(QWidget):
     
     def setEventos(self):
         self.b_novo.clicked.connect(self.addVeiculo)
-        self.b_limpar.clicked.connect(self.limpaCampos)
+        self.b_limpar.clicked.connect(self.limparCampos)
         self.b_excluir.clicked.connect(self.excluirItem)
     
     def addVeiculo(self):
@@ -42,19 +42,19 @@ class CadVeiculo(QWidget):
             return Veiculo(-1, self.campMarca.text(), self.campModelo.text(), self.campTipo.tex(), self.campCateg.text(), self.campanoFab.text(), self.campPlaca.text(), self.campChassi.text(), self.campRenavam.text(), self.campCapPassag.text(), self.campPotencia.text(), self.campCilindradas.text())
         return None
 
-    def limpaCampos(self):
+    def limparCampos(self):
         self.veiculoAtual = None
-        self.campMarca.setText() = ""
-        self.campModelo.setText() = ""
-        self.campTipo.setText() = ""
-        self.campCateg.setText() = ""
-        self.campAnoFab.setText() = ""
-        self.campPlaca.setText() = ""
-        self.campChassi.setText() = ""
-        self.campRenavam.setText() = ""
-        self.campCapPassag.setText() = ""
-        self.campPotencia.setText() = ""
-        self.campCilindradas.setText() = ""
+        self.campMarca.setText("")
+        self.campModelo.setText("")
+        self.campTipo.setText("")
+        self.campCateg.setText("")
+        self.campAnoFab.setText("")
+        self.campPlaca.setText("")
+        self.campChassi.setText("")
+        self.campRenavam.setText("")
+        self.campCapPassag.setText("")
+        self.campPotencia.setText("")
+        self.campCilindradas.setText("")
 
         self.b_novo.setText("Adicionar")
         self.b_excluir.setEnabled(False)
@@ -80,4 +80,4 @@ class CadVeiculo(QWidget):
 
     def excluirItem(self):
         self.table.delete(self.veiculoAtual)
-        self.limpaCampos()
+        self.limparCampos()

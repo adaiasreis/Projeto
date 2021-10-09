@@ -1,5 +1,5 @@
 #Classe Usuário
-class Usuario:
+class Funcionario:
     def __init__ (self, id, nome, rgNum, orgaoExp, dataEmis, cpf, telefone, nasc, email, endereco, nomeMae, cargo, salario, cargahs, usuario, senha):
         self.id = id
         self.nome = nome

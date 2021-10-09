@@ -173,7 +173,7 @@
         </widget>
        </item>
        <item row="0" column="1">
-        <widget class="QLineEdit" name="campDnasc"/>
+        <widget class="QLineEdit" name="campNasc"/>
        </item>
        <item row="0" column="2">
         <widget class="QLabel" name="label_12">
@@ -266,7 +266,7 @@
   <tabstop>campChd</tabstop>
   <tabstop>campCpf</tabstop>
   <tabstop>campTelefone</tabstop>
-  <tabstop>campDnasc</tabstop>
+  <tabstop>campNasc</tabstop>
   <tabstop>campEmail</tabstop>
   <tabstop>campEndereco</tabstop>
   <tabstop>campNmae</tabstop>

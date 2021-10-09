@@ -56,7 +56,7 @@
          </widget>
         </item>
         <item row="0" column="1">
-         <widget class="QDateEdit" name="DataInic">
+         <widget class="QDateEdit" name="dataInic">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -126,7 +126,7 @@
          </widget>
         </item>
         <item row="0" column="3">
-         <widget class="QTimeEdit" name="HoraIn">
+         <widget class="QTimeEdit" name="horaIn">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -200,7 +200,7 @@
     </layout>
    </item>
    <item>
-    <widget class="QGroupBox" name="groupBox_3">
+    <widget class="QGroupBox" name="g_status">
      <property name="enabled">
       <bool>true</bool>
      </property>
@@ -268,7 +268,7 @@
       <item>
        <layout class="QFormLayout" name="formLayout_7">
         <item row="0" column="1">
-         <widget class="QDateEdit" name="DataFinal">
+         <widget class="QDateEdit" name="dataFinal">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -320,16 +320,6 @@
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
-      <widget class="QPushButton" name="b_excluir">
-       <property name="enabled">
-        <bool>false</bool>
-       </property>
-       <property name="text">
-        <string>Excluir</string>
-       </property>
-      </widget>
-     </item>
-     <item>
       <spacer name="horizontalSpacer">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
@@ -364,11 +354,11 @@
   </layout>
  </widget>
  <tabstops>
-  <tabstop>DataInic</tabstop>
+  <tabstop>dataInic</tabstop>
   <tabstop>comboVeiculo</tabstop>
   <tabstop>comboCliente</tabstop>
   <tabstop>campKmInic</tabstop>
-  <tabstop>HoraIn</tabstop>
+  <tabstop>horaIn</tabstop>
   <tabstop>campKmEstim</tabstop>
   <tabstop>comboSeguro</tabstop>
   <tabstop>comboTaxas</tabstop>
@@ -378,12 +368,11 @@
   <tabstop>r_cancelado</tabstop>
   <tabstop>r_andamento</tabstop>
   <tabstop>r_concluido</tabstop>
-  <tabstop>DataFinal</tabstop>
+  <tabstop>dataFinal</tabstop>
   <tabstop>campKmEnt</tabstop>
   <tabstop>campInform</tabstop>
   <tabstop>b_salvar</tabstop>
   <tabstop>b_limparCampos</tabstop>
-  <tabstop>b_excluir</tabstop>
  </tabstops>
  <resources/>
  <connections/>

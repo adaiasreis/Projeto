@@ -8,12 +8,14 @@ class MainWindow(QMainWindow):
         uic.loadUi("ui/ui_mainWindow.ui",self)
 
         #self.fazerLogin()
+        self.carregarJanelas()
 
     def carregarJanelas(self):
-        self.stackedWidget.insertWidget(0, CadProdutos())
+        self.stackedWidget.insertWidget(0, CadVeiculos())
         self.stackedWidget.insertWidget(1, CadClientes())
-        self.stackedWidget.insertWidget(2, Vendas(self))
-        self.stackedWidget.insertWidget(3, NovaVenda())
+        self.stackedWidget.insertWidget(2, CadFuncionarios(self))
+        self.stackedWidget.insertWidget(3, Servicos())
+        self.stackedWidget.insertWidget(4, Locacoes())
 
     def display(self):
 
