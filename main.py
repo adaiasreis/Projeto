@@ -1,11 +1,9 @@
-from PyQt5.QtWidgets import QWidget, QApplication, QMainWindow
-from PyQt5 import uic
+from PyQt5.QtWidgets import QApplication
 import sys
-from layouts.mainWindow import MainWindow
-
+from layouts.ui_telaLogin import FazerLogin
 
 
 app = QApplication(sys.argv)
-window = MainWindow()
+window = FazerLogin()
 window.show()
 app.exec_()

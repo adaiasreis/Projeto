@@ -1,6 +1,6 @@
 #Classe de veiculos
 class Veiculo:
-    def __init__ (self, id, marca, modelo, tipo, categ, anoFab, placa, chassi, renavam, capPassag, potencia, cilindradas):
+    def __init__ (self, id, marca, modelo, tipo, categ, anoFab, placa, chassi, renavam, capPassag, portas, potencia, cilindradas):
         self.id = id
         self.marca = marca
         self.modelo = modelo
@@ -11,6 +11,6 @@ class Veiculo:
         self.chassi = chassi
         self.renavam = renavam
         self.capPassag = capPassag
+        self.portas = portas
         self.potencia = potencia
         self.cilindradas = cilindradas
-

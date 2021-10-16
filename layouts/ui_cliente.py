@@ -1,12 +1,20 @@
 from PyQt5.QtWidgets import QWidget
 from PyQt5 import uic
 
+from components.table_clientes import TableWidget
 from clas.cliente import Cliente
 
-class CadVeiculos(QWidget):
+class CadClientes(QWidget):
     def __init__(self):
         super(). __init__()
         uic.loadUi("ui/ui_cliente.ui", self)
+
+        self.table = TableWidget(self)
+        self.verticalLayout.addWidget(self.table)
+
+        self.setEventos()
+
+        self.clienteAtual = None
 
     def setEventos(self):
         self.b_novo.clicked.connect(self.addCliente)
@@ -60,7 +68,7 @@ class CadVeiculos(QWidget):
 
         self.b_novo.setText("Adicionar")
         self.b_excluir.setEnabled(False)
-        self.b_historico.setEnabled(False)
+        self.b_limpar.setEnabled(False)
 
     def insereCliente(self, cliente):
         self.clienteAtual = cliente
@@ -80,7 +88,7 @@ class CadVeiculos(QWidget):
 
         self.b_novo.setText("Atualizar")
         self.b_excluir.setEnabled(True)
-        self.b_historico.setEnabled(True)
+        self.b_limpar.setEnabled(True)
 
     def excluirItem(self):
         self.table.delete(self.clienteAtual)

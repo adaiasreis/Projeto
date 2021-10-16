@@ -1,12 +1,20 @@
 from PyQt5.QtWidgets import QWidget
 from PyQt5 import uic
 
+from components.table_locacoes import TableWidget
 from clas.locacao import Locacao
 
-class CadLocacao(QWidget):
+class CadLocacoes(QWidget):
     def __init__(self):
         super(). __init__()
         uic.loadUi("ui/ui_locacao.ui", self)
+
+        self.table = TableWidget(self)
+        self.verticalLayout.addWidget(self.table)
+
+        self.setEventos()
+
+        self.locacaoAtual = None
 
     def setEventos(self):
         self.b_novo.clicked.connect(self.addLocacao)
@@ -56,7 +64,7 @@ class CadLocacao(QWidget):
 
         self.b_novo.setText("Adicionar")
         self.b_excluir.setEnabled(False)
-        self.b_historico.setEnabled(False)
+        self.b_limpar.setEnabled(False)
 
     def insereLocacao(self, locacao):
         self.funcionarioAtual = locacao
@@ -76,4 +84,4 @@ class CadLocacao(QWidget):
 
         self.b_novo.setText("Atualizar")
         self.b_excluir.setEnabled(True)
-        self.b_historico.setEnabled(True)
+        self.b_limpar.setEnabled(True)

@@ -1,19 +1,27 @@
 from PyQt5.QtWidgets import QWidget
 from PyQt5 import uic
 
+from components.table_funcionarios import TableWidget
 from clas.funcionario import Funcionario
 
-class CadFuncionario(QWidget):
+class CadFuncionarios(QWidget):
     def __init__(self):
         super(). __init__()
         uic.loadUi("ui/ui_funcionario.ui", self)
 
+        self.table = TableWidget(self)
+        self.verticalLayout.addWidget(self.table)
+
+        self.setEventos()
+
+        self.funcionarioAtual = None
+
     def setEventos(self):
-        self.b_novo.clicked.connect(self.addFuncionario)
+        self.b_novo.clicked.connect(self.addFunc)
         self.b_limpar.clicked.connect(self.limparCampos)
         self.b_excluir.clicked.connect(self.excluirItem)
 
-    def addFuncionario(self):
+    def addFunc(self):
         novoFuncionario = self.getFuncionario()
         if novoFuncionario != None:
             if self.funcionarioAtual == None:
@@ -23,7 +31,7 @@ class CadFuncionario(QWidget):
                 self.table.update(novoFuncionario)
             self.limparCampos()
 
-    def getFuncionarios(self):
+    def getFunc(self):
         nome = self.campNome.text()
         rgNum = self.campRgn.text()
         orgaoExp = self.campRgo.text()
@@ -37,7 +45,7 @@ class CadFuncionario(QWidget):
         cargo = self.campCargo.text()
         salario = self.campSalario.text()
         cargahs = self.campCarga.text()
-        usuario = self.campUsario.text()
+        usuario = self.campUsuario.text()
         senha = self.campSenha.text()
 
         if ((nome != "") and (rgNum != "") and (orgaoExp != "") and (rgDataEmis != "") and (cpf != "") and (telefone != "") and (nasc != "") and (email != "") and (endereco != "") and (nomeMae != "") and (cargo != "") and (salario != "") and (cargahs != "") and (usuario != "" ) and (senha != "")):
@@ -59,34 +67,34 @@ class CadFuncionario(QWidget):
         self.campCargo.text("")
         self.campSalario.text("")
         self.campCarga.text("")
-        self.campUsario.text("")
+        self.campUsuario.text("")
         self.campSenha.text("")
 
         self.b_novo.setText("Adicionar")
         self.b_excluir.setEnabled(False)
-        self.b_historico.setEnabled(False)
+        self.b_limpar.setEnabled(False)
 
-    def insereFuncionario(self, funcionario):
+    def insereFunc(self, funcionario):
         self.funcionarioAtual = funcionario
-        self.campNome.text(funcionario.nome)
-        self.campRgn.text(funcionario.rgNum)
-        self.campRgo.text(funcionario.orgaoExp)
-        self.campRgd.text(funcionario.dataEmis)
-        self.campCpf.text(funcionario.cpf)
-        self.campTelefone.text(funcionario.telefone)
-        self.campNasc.text(funcionario.nasc)
-        self.campEmail.text(funcionario.email)
-        self.campEndereco.text(funcionario.endereco)
-        self.campNmae.text(funcionario.nomeMae)
-        self.campCargo.text(funcionario.cargo)
-        self.campSalario.text(funcionario.salario)
-        self.campCarga.text(funcionario.cargahs)
-        self.campUsario.text(funcionario.usuario)
-        self.campSenha.text(funcionario.senha)
+        self.campNome.setText(funcionario.nome)
+        self.campRgn.setText(funcionario.rgNum)
+        self.campRgo.setText(funcionario.orgaoExp)
+        self.campRgd.setText(funcionario.dataEmis)
+        self.campCpf.setText(funcionario.cpf)
+        self.campTelefone.setText(funcionario.telefone)
+        self.campNasc.setText(funcionario.nasc)
+        self.campEmail.setText(funcionario.email)
+        self.campEndereco.setText(funcionario.endereco)
+        self.campNmae.setText(funcionario.nomeMae)
+        self.campCargo.setText(funcionario.cargo)
+        self.campSalario.setText(str(funcionario.salario))
+        self.campCarga.setText(str(funcionario.cargahs))
+        self.campUsuario.setText(funcionario.usuario)
+        self.campSenha.setText(funcionario.senha)
 
         self.b_novo.setText("Atualizar")
         self.b_excluir.setEnabled(True)
-        self.b_historico.setEnabled(True)
+        self.b_limpar.setEnabled(True)
 
     def excluirItem(self):
         self.table.delete(self.funcionarioAtual)

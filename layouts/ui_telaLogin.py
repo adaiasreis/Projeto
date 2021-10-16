@@ -2,12 +2,19 @@ from PyQt5.QtWidgets import QWidget, QApplication
 from PyQt5 import uic
 import sys
 
-class FazerLogin(QWidget):
-    def __init__(self, parent):
-        super().__init__()
-        uic.loadUi("ui/ui_login.ui",self)
+from layouts.ui_mainWindow import MainWindow
+import models.model_funcionario as Funcionarios
 
-        self.parent = parent
+class FazerLogin(QWidget):
+    def __init__(self):
+        super().__init__()
+        uic.loadUi("ui/ui_telaLogin.ui",self)
+
+        self.setEventos()
+
+    def setEventos(self):
+        self.b_entrar.clicked.connect(self.fazerLogin)
+        self.b_sair.clicked.connect(self.Sair)
 
     def fazerLogin(self):
 
@@ -20,11 +27,11 @@ class FazerLogin(QWidget):
             usuario = self.campUsuario.text()
             senha = self.campSenha.text()
 
-            self.login = Usuarios.getLogin(usuario, senha)
+            self.login = Funcionarios.getLogin(usuario, senha)
             print(self.login)
             
             if  len(self.login) > 0:
-                self.scre = self.parent.MainWindow(self)
+                self.scre = MainWindow(self, self.login[0])
                 self.scre.show()
                 self.hide()
                 self.limpaCampos()
@@ -36,5 +43,8 @@ class FazerLogin(QWidget):
     
     def limpaCampos(self):
         self.newUser = None
-        self.campUser.setText("")
-        self.campPassw.setText("")
+        self.campUsuario.setText("")
+        self.campSenha.setText("")
+
+    def Sair(self):
+        self.close()

@@ -57,7 +57,7 @@
         </widget>
        </item>
        <item row="1" column="6">
-        <widget class="QLineEdit" name="campCategoria"/>
+        <widget class="QLineEdit" name="campCateg"/>
        </item>
        <item row="0" column="6">
         <widget class="QLabel" name="label_9">
@@ -137,28 +137,38 @@
         <widget class="QLineEdit" name="campPotencia"/>
        </item>
        <item row="1" column="1">
-        <widget class="QLineEdit" name="campCapPass"/>
+        <widget class="QLineEdit" name="campCapPassag"/>
        </item>
        <item row="0" column="1">
         <widget class="QLabel" name="label_6">
          <property name="text">
-          <string>Capacidade de Passageiros</string>
+          <string>Lugares</string>
          </property>
         </widget>
        </item>
        <item row="0" column="3">
         <widget class="QLabel" name="label_7">
          <property name="text">
-          <string>Potência</string>
+          <string>Potência (cv)</string>
          </property>
         </widget>
        </item>
        <item row="0" column="5">
         <widget class="QLabel" name="label_8">
          <property name="text">
-          <string>Cilindradas do Motor</string>
+          <string>Cilindradas do Motor (cm3)</string>
          </property>
         </widget>
+       </item>
+       <item row="0" column="2">
+        <widget class="QLabel" name="label_10">
+         <property name="text">
+          <string>Portas</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="2">
+        <widget class="QLineEdit" name="campPortas"/>
        </item>
       </layout>
      </item>
@@ -175,14 +185,14 @@
         </widget>
        </item>
        <item row="0" column="3">
-        <widget class="QPushButton" name="b_salvar">
+        <widget class="QPushButton" name="b_novo">
          <property name="text">
           <string>Salvar</string>
          </property>
         </widget>
        </item>
        <item row="0" column="2">
-        <widget class="QPushButton" name="b_limparCampos">
+        <widget class="QPushButton" name="b_limpar">
          <property name="enabled">
           <bool>false</bool>
          </property>
@@ -214,16 +224,16 @@
   <tabstop>campMarca</tabstop>
   <tabstop>campModelo</tabstop>
   <tabstop>campTipo</tabstop>
-  <tabstop>campCategoria</tabstop>
+  <tabstop>campCateg</tabstop>
   <tabstop>campAnoF</tabstop>
   <tabstop>campPlaca</tabstop>
   <tabstop>campChassi</tabstop>
   <tabstop>campRenavam</tabstop>
-  <tabstop>campCapPass</tabstop>
+  <tabstop>campCapPassag</tabstop>
   <tabstop>campPotencia</tabstop>
   <tabstop>campCilindradas</tabstop>
-  <tabstop>b_salvar</tabstop>
-  <tabstop>b_limparCampos</tabstop>
+  <tabstop>b_novo</tabstop>
+  <tabstop>b_limpar</tabstop>
   <tabstop>b_excluir</tabstop>
  </tabstops>
  <resources/>
