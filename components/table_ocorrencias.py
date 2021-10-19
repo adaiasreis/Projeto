@@ -43,13 +43,13 @@ class TableWidget(QTableWidget):
         # fixa a linha e muda a coluna conforme os valores
         id_item = QTableWidgetItem(str(ocor.id))
         id_tipo = QTableWidgetItem(ocor.tipo)
-        id_identificacao = QTableWidgetItem(ocor.identificacao)
-        id_valor = QTableWidgetItem(ocor.valor)
+        id_ident = QTableWidgetItem(ocor.ident)
+        id_valor = QTableWidgetItem(str(ocor.valor))
         # insere os itens na tabela
         self.setItem(rowCount, 0, id_item)
-        self.setItem(rowCount, 3, id_tipo)
-        self.setItem(rowCount, 4, id_identificacao)
-        self.setItem(rowCount, 5, id_valor)
+        self.setItem(rowCount, 1, id_tipo)
+        self.setItem(rowCount, 2, id_ident)
+        self.setItem(rowCount, 3, id_valor)
 
     def on_click(self):
         selected_row = self.currentRow()

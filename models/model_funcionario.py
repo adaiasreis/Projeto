@@ -67,9 +67,9 @@ def addFunc(funcionario):
 def editFunc(funcionario):
     conn = db.connect_db()
     cursor = conn.cursor()
-    sql = ("UPDATE Funcionarios SET nome=?, rgNum=?, orgaoExp=?, dataEmis=?, cpf=?, telefone=?, nasc=?, email=?, endereco=?, nomeMae=?, cargo=?, salario=?, cargahs=?, usuario=?, senha=?;")
-    cursor.execute(sql, [funcionario.nome, funcionario.rgNum, funcionario.orgaoExp, funcionario.dataEmis, funcionario.cpf, funcionario.telefone, funcionario.nasc,
-        funcionario.email, funcionario.endereco, funcionario.nomeMae, funcionario.cargo, funcionario.salario, funcionario.cargahs, funcionario.usuario, funcionario.senha])
+    sql = ("UPDATE Funcionarios SET nome=?, rgNum=?, orgaoExp=?, dataEmis=?, cpf=?, telefone=?, nasc=?, email=?, endereco=?, nomeMae=?, cargo=?, salario=?, cargahs=?, usuario=?, senha=? WHERE id=?;")
+    cursor.execute(sql, [funcionario.nome, funcionario.rgNum, funcionario.orgaoExp, funcionario.dataEmis, funcionario.cpf, funcionario.telefone, funcionario.nasc, funcionario.email, funcionario.endereco,
+        funcionario.nomeMae, funcionario.cargo, funcionario.salario, funcionario.cargahs, funcionario.usuario, funcionario.senha, funcionario.id])
     conn.commit()
     conn.close()
 

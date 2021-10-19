@@ -1,4 +1,3 @@
-import sys
 from PyQt5.QtWidgets import QMainWindow
 from PyQt5 import uic
 
@@ -8,6 +7,8 @@ from layouts.ui_cliente import CadClientes
 from layouts.ui_funcionario import CadFuncionarios
 from layouts.ui_ocorrencia import CadOcorrencias
 from layouts.ui_locacao import CadLocacoes
+from layouts.ui_ajuda import Ajuda
+from layouts.ui_sobre import Sobre
 
 class MainWindow(QMainWindow):
     def __init__(self, janelaLogin, usuarioAtual):
@@ -32,8 +33,8 @@ class MainWindow(QMainWindow):
         self.stackedWidget.insertWidget(3, CadFuncionarios())
         self.stackedWidget.insertWidget(4, CadOcorrencias())
         self.stackedWidget.insertWidget(5, CadLocacoes())
-        #self.stackedWidget.insertWidget(6, Ajuda())
-        #self.stackedWidget.insertWidget(7, Sobre())
+        self.stackedWidget.insertWidget(6, Ajuda())
+        self.stackedWidget.insertWidget(7, Sobre())
 
     def display(self, index):
         # necessário carregar as janelas a cada trasição para atualizar as informações

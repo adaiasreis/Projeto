@@ -386,7 +386,7 @@
        <item>
         <widget class="QPushButton" name="b_novo">
          <property name="text">
-          <string>Salvar</string>
+          <string>Adicionar</string>
          </property>
         </widget>
        </item>

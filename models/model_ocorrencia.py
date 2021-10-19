@@ -41,8 +41,8 @@ def addOcor(ocorrencia):
 def editOcor(ocorrencia):
     conn = db.connect_db()
     cursor = conn.cursor()
-    sql = ("UPDATE Ocorrencias SET tipo=?, ident=?, valor=?;")
-    cursor.execute(sql, [ocorrencia.tipo, ocorrencia.ident, ocorrencia.valor])
+    sql = ("UPDATE Ocorrencias SET tipo=?, ident=?, valor=? WHERE id=?;")
+    cursor.execute(sql, [ocorrencia.tipo, ocorrencia.ident, ocorrencia.valor, ocorrencia.id])
     conn.commit()
     conn.close()
 

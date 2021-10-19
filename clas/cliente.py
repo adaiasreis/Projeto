@@ -6,7 +6,7 @@ class Cliente:
         self.rgNum = rgNum
         self.orgaoExp = orgaoExp
         self.rgDataEmis = rgDataEmis
-        self.chnNum = cnhNum
+        self.cnhNum = cnhNum
         self.categ = categ
         self.cnhDataEmis = cnhDataEmis
         self.cpf = cpf

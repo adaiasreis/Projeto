@@ -12,17 +12,22 @@ class CadOcorrencias(QWidget):
         self.table = TableWidget(self)
         self.verticalLayout.addWidget(self.table)
 
+        self.index_changed_tipos()
+        
         self.setEventos()
 
-        self.veiculoAtual = None
+        self.ocorrenciaAtual = None
 
     def setEventos(self):
-        self.b_novo.clicked.connect(self.addOcorrencias)
+        self.b_novo.clicked.connect(self.addOcor)
         self.b_limpar.clicked.connect(self.limparCampos)
         self.b_excluir.clicked.connect(self.excluirItem)
 
-    def addOcorrencias(self):
-        novoOcorrencia = self.getOcorrencias()
+    def index_changed_tipos(self):
+        self.comboTipo.addItems(["Selecione...", "Seguro", "Serviço", "Taxa Especial"])
+
+    def addOcor(self):
+        novoOcorrencia = self.getOcor()
         if novoOcorrencia != None:
             if self.ocorrenciaAtual == None:
                 self.table.add(novoOcorrencia)
@@ -31,35 +36,35 @@ class CadOcorrencias(QWidget):
                 self.table.update(novoOcorrencia)
             self.limparCampos()
 
-    def getOcorrencias(self):
-        tipo = self.camboTipo.currentText()
-        indet = self.campIden.text()
-        valor = self.campVal.text()
+    def getOcor(self):
+        tipo = self.comboTipo.currentText()
+        indet = self.campIdent.text()
+        valor = self.campValor.text()
 
-        if ((tipo != "") and (indet != "") and (valor != "")):
-            return Ocorrencia (-1, self.comboTipo.currentText(), self.campIden.text(), self.campVal.text())
+        if ((tipo != "Selecione...") and (indet != "") and (valor != "")):
+            return Ocorrencia (-1, self.comboTipo.currentText(), self.campIdent.text(), self.campValor.text())
         return None
 
     def limparCampos(self):
-        self.OcorrenciaAtual = None
-        self.comboTipo.text("Selecione...")
-        self.campIdent("")
-        self.campValor.text("")
+        self.ocorrenciaAtual = None
+        self.comboTipo.setCurrentIndex(0)
+        self.campIdent.setText("")
+        self.campValor.setText("")
 
         self.b_novo.setText("Adicionar")
         self.b_excluir.setEnabled(False)
         self.b_limpar.setEnabled(False)
 
-    def insereOcorrencia(self, ocorrencia):
+    def insereOcor(self, ocorrencia):
         self.ocorrenciaAtual = ocorrencia
-        self.comboTipo.text(ocorrencia.tipo)
-        self.campIdent.text(ocorrencia.campIdent)
-        self.campValor.text(ocorrencia.campValor)
+        self.comboTipo.setCurrentText(ocorrencia.tipo)
+        self.campIdent.setText(ocorrencia.ident)
+        self.campValor.setText(str(ocorrencia.valor))
 
         self.b_novo.setText("Atualizar")
         self.b_excluir.setEnabled(True)
         self.b_limpar.setEnabled(True)
 
     def excluirItem(self):
-        self.table.delete(self.Ocorrenciatual)
+        self.table.delete(self.ocorrenciaAtual)
         self.limparCampos()

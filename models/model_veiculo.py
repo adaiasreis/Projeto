@@ -10,7 +10,7 @@ def getVeiculos():
         id = v[0]
         marca = v[1]
         modelo = v[2]
-        tipo = v[3]
+        cor = v[3]
         categ = v[4]
         anoFab = v[5]
         placa = v[6]
@@ -20,7 +20,7 @@ def getVeiculos():
         portas = v[10]
         potencia = v[11]
         cilindradas = v[12]
-        nova = Veiculo(id, marca, modelo, tipo, categ, anoFab, placa, chassi, renavam, capPassag, portas, potencia, cilindradas)
+        nova = Veiculo(id, marca, modelo, cor, categ, anoFab, placa, chassi, renavam, capPassag, portas, potencia, cilindradas)
         lista_veiculos.append(nova)
     conn.close()
     return lista_veiculos
@@ -34,7 +34,7 @@ def getVeiculo(id):
     id = v[0]
     marca = v[1]
     modelo = v[2]
-    tipo = v[3]
+    cor = v[3]
     categ = v[4]
     anoFab = v[5]
     placa = v[6]
@@ -44,16 +44,16 @@ def getVeiculo(id):
     portas = v[10]
     potencia = v[11]
     cilindradas = v[12]
-    novo = Veiculo(id, marca, modelo, tipo, categ, anoFab, placa, chassi, renavam, capPassag, portas, potencia, cilindradas)
+    novo = Veiculo(id, marca, modelo, cor, categ, anoFab, placa, chassi, renavam, capPassag, portas, potencia, cilindradas)
     conn.close()
     return novo
 
 def addVeiculo(veiculo):
     conn = db.connect_db()
     cursor = conn.cursor()
-    sql = """INSERT INTO Veiculos (marca, modelo, tipo, categ, anoFab, placa, chassi, renavam, capPassag, portas, potencia, cilindradas)
+    sql = """INSERT INTO Veiculos (marca, modelo, cor, categ, anoFab, placa, chassi, renavam, capPassag, portas, potencia, cilindradas)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) """
-    cursor.execute(sql, [veiculo.marca, veiculo.modelo, veiculo.tipo, veiculo.categ, veiculo.anoFab, veiculo.placa, veiculo.chassi, 
+    cursor.execute(sql, [veiculo.marca, veiculo.modelo, veiculo.cor, veiculo.categ, veiculo.anoFab, veiculo.placa, veiculo.chassi, 
         veiculo.renavam, veiculo.capPassag, veiculo.portas, veiculo.potencia, veiculo.cilindradas])
     conn.commit()
     conn.close()
@@ -61,9 +61,9 @@ def addVeiculo(veiculo):
 def editVeiculo(veiculo):
     conn = db.connect_db()
     cursor = conn.cursor()
-    sql = ("UPDATE Veiculos SET marca=?, modelo=?, tipo=?, categ=?, anoFab=?, placa=?, chassi=?, renavam=?, capPassag=?, portas=?, potencia=?, cilindradas=?;")
-    cursor.execute(sql, [veiculo.marca, veiculo.modelo, veiculo.tipo, veiculo.categ, veiculo.anoFab, veiculo.placa, veiculo.chassi, 
-        veiculo.renavam, veiculo.capPassag, veiculo.portas, veiculo.potencia, veiculo.cilindradas])
+    sql = ("UPDATE Veiculos SET marca=?, modelo=?, cor=?, categ=?, anoFab=?, placa=?, chassi=?, renavam=?, capPassag=?, portas=?, potencia=?, cilindradas=? WHERE id=?;")
+    cursor.execute(sql, [veiculo.marca, veiculo.modelo, veiculo.cor, veiculo.categ, veiculo.anoFab, veiculo.placa, veiculo.chassi, 
+        veiculo.renavam, veiculo.capPassag, veiculo.portas, veiculo.potencia, veiculo.cilindradas, veiculo.id])
     conn.commit()
     conn.close()
 

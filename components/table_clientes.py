@@ -25,7 +25,7 @@ class TableWidget(QTableWidget):
         self.horizontalHeader().setSectionResizeMode(5,QHeaderView.ResizeToContents)
         self.horizontalHeader().setSectionResizeMode(6,QHeaderView.ResizeToContents)
         self.horizontalHeader().setSectionResizeMode(7,QHeaderView.ResizeToContents)
-        self.horizontalHeader().setSectionResizeMode(8,QHeaderView.ResizeToContents)
+        self.horizontalHeader().setSectionResizeMode(8,QHeaderView.Stretch)
         self.horizontalHeader().setSectionResizeMode(9,QHeaderView.Stretch)
         # Alterna as cores das linhas
         self.setAlternatingRowColors(True)
@@ -49,8 +49,8 @@ class TableWidget(QTableWidget):
         # fixa a linha e muda a coluna conforme os valores
         id_item = QTableWidgetItem(str(cliente.id))
         id_nome = QTableWidgetItem(cliente.nome)
-        id_rg= QTableWidgetItem(cliente.rg)
-        id_cnh = QTableWidgetItem(cliente.cnh)
+        id_rg= QTableWidgetItem(cliente.rgNum)
+        id_cnh = QTableWidgetItem(cliente.cnhNum)
         id_categ = QTableWidgetItem(cliente.categ)
         id_cpf = QTableWidgetItem(cliente.cpf)
         id_telefone = QTableWidgetItem(cliente.telefone)

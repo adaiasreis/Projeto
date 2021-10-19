@@ -1,19 +1,21 @@
-from PyQt5.QtWidgets import QWidget
+from PyQt5.QtWidgets import QWidget, QMessageBox
 from PyQt5 import uic
 
 from components.table_funcionarios import TableWidget
 from clas.funcionario import Funcionario
+import models.model_funcionario as Funcionarios
 
 class CadFuncionarios(QWidget):
     def __init__(self):
         super(). __init__()
         uic.loadUi("ui/ui_funcionario.ui", self)
 
+        #Ajusta a tabela
         self.table = TableWidget(self)
         self.verticalLayout.addWidget(self.table)
-
+        #Carrega os eventos
         self.setEventos()
-
+        #Inicia o funcionario como vazio
         self.funcionarioAtual = None
 
     def setEventos(self):
@@ -22,7 +24,7 @@ class CadFuncionarios(QWidget):
         self.b_excluir.clicked.connect(self.excluirItem)
 
     def addFunc(self):
-        novoFuncionario = self.getFuncionario()
+        novoFuncionario = self.getFunc()
         if novoFuncionario != None:
             if self.funcionarioAtual == None:
                 self.table.add(novoFuncionario)
@@ -49,31 +51,32 @@ class CadFuncionarios(QWidget):
         senha = self.campSenha.text()
 
         if ((nome != "") and (rgNum != "") and (orgaoExp != "") and (rgDataEmis != "") and (cpf != "") and (telefone != "") and (nasc != "") and (email != "") and (endereco != "") and (nomeMae != "") and (cargo != "") and (salario != "") and (cargahs != "") and (usuario != "" ) and (senha != "")):
-            return Funcionario (-1, self.campNome.text(), self.campRgn.text(), self.campRgo.text(), self.campRgd.text(), self.campCpf.text(), self.campTelefone.text(), self.campNasc.text(), self.campEmail.text(), self.campendereco.text(), self.campNmae.text(), self.campCargo.text(), self.campSalario.text(), self.campCarga.text(), self.campUsuario.text(), self.campSenha.text())
+            return Funcionario (-1, self.campNome.text(), self.campRgn.text(), self.campRgo.text(), self.campRgd.text(), self.campCpf.text(), self.campTelefone.text(), self.campNasc.text(), self.campEmail.text(), self.campEndereco.text(), self.campNmae.text(), self.campCargo.text(), self.campSalario.text(), self.campCarga.text(), self.campUsuario.text(), self.campSenha.text())
         return None
 
     def limparCampos(self):
         self.funcionarioAtual = None
-        self.campNome.text("")
-        self.campRgn.text("")
-        self.campRgo.text("")
-        self.campRgd.text("")
-        self.campCpf.text("")
-        self.campTelefone.text("")
-        self.campNasc.text("")
-        self.campEmail.text("")
-        self.campEndereco.text("")
-        self.campNmae.text("")
-        self.campCargo.text("")
-        self.campSalario.text("")
-        self.campCarga.text("")
-        self.campUsuario.text("")
-        self.campSenha.text("")
+        self.campNome.setText("")
+        self.campRgn.setText("")
+        self.campRgo.setText("")
+        self.campRgd.setText("")
+        self.campCpf.setText("")
+        self.campTelefone.setText("")
+        self.campNasc.setText("")
+        self.campEmail.setText("")
+        self.campEndereco.setText("")
+        self.campNmae.setText("")
+        self.campCargo.setText("")
+        self.campSalario.setText("")
+        self.campCarga.setText("")
+        self.campUsuario.setText("")
+        self.campSenha.setText("")
 
         self.b_novo.setText("Adicionar")
+        self.campUsuario.setEnabled(True)
         self.b_excluir.setEnabled(False)
         self.b_limpar.setEnabled(False)
-
+        
     def insereFunc(self, funcionario):
         self.funcionarioAtual = funcionario
         self.campNome.setText(funcionario.nome)
@@ -90,12 +93,25 @@ class CadFuncionarios(QWidget):
         self.campSalario.setText(str(funcionario.salario))
         self.campCarga.setText(str(funcionario.cargahs))
         self.campUsuario.setText(funcionario.usuario)
-        self.campSenha.setText(funcionario.senha)
 
         self.b_novo.setText("Atualizar")
         self.b_excluir.setEnabled(True)
         self.b_limpar.setEnabled(True)
+        self.campUsuario.setEnabled(False)
 
     def excluirItem(self):
-        self.table.delete(self.funcionarioAtual)
-        self.limparCampos()
+        self.lista_funcionarios = Funcionarios.getFuncs()
+        #Se houver somente um funcionario cadastrado o sistema não permite a exclusão
+        if len(self.lista_funcionarios) == 1:
+            self.messageError()
+        else:
+            self.table.delete(self.funcionarioAtual)
+            self.limparCampos()
+    
+    def messageError(self):
+        em = QMessageBox()
+        em.setIcon(QMessageBox.Information)
+        em.setText("A exclusão não foi permitida porque a tabela de Funcionários não pode ficar vazia. Para completar esta ação, por favor cadastre um novo funcionário.")
+        em.setInformativeText("Para mais informações, consulte o menu Ajuda")
+        em.setWindowTitle("Exclusão Não Permitida")
+        em.exec()

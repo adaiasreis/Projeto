@@ -6,7 +6,7 @@ class TableWidget(QTableWidget):
         super().__init__(0, 7)
         self.parent = parent
 
-        headers = ["ID","MARCA","MODELO","TIPO","CATEGORIA","ANO FAB","PLACA"]
+        headers = ["ID","MARCA","MODELO","COR","CATEGORIA","ANO FAB","PLACA"]
         self.setHorizontalHeaderLabels(headers)
 
         self.configTable()
@@ -47,7 +47,7 @@ class TableWidget(QTableWidget):
         id_item = QTableWidgetItem(str(veiculo.id))
         id_marca = QTableWidgetItem(veiculo.marca)
         id_modelo= QTableWidgetItem(veiculo.modelo)
-        id_tipo = QTableWidgetItem(veiculo.tipo)
+        id_cor = QTableWidgetItem(veiculo.cor)
         id_categ = QTableWidgetItem(veiculo.categ)
         id_anoFab = QTableWidgetItem(veiculo.anoFab)
         id_placa = QTableWidgetItem(veiculo.placa)
@@ -55,7 +55,7 @@ class TableWidget(QTableWidget):
         self.setItem(rowCount, 0, id_item)
         self.setItem(rowCount, 1, id_marca)
         self.setItem(rowCount, 2, id_modelo)
-        self.setItem(rowCount, 3, id_tipo)
+        self.setItem(rowCount, 3, id_cor)
         self.setItem(rowCount, 4, id_categ)
         self.setItem(rowCount, 5, id_anoFab)
         self.setItem(rowCount, 6, id_placa)

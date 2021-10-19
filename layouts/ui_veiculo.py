@@ -35,7 +35,7 @@ class CadVeiculos(QWidget):
     def getVeiculos(self):
         marca = self.campMarca.text()
         modelo = self.campModelo.text()
-        tipo = self.campTipo.text()
+        cor = self.campCor.text()
         categ = self.campCateg.text()
         anoF = self.campAnoF.text()
         placa = self.campPlaca.text()
@@ -46,15 +46,15 @@ class CadVeiculos(QWidget):
         potencia = self.campPotencia.text()
         cilindradas = self.campCilindradas.text()
         
-        if ((marca != "") and (modelo != "") and (tipo != "") and (categ != "") and (anoF != "") and (placa != "") and (chassi != "") and (renavam != "") and (capPassag != "") and (portas != "") and (potencia != "") and (cilindradas != "")):
-            return Veiculo(-1, self.campMarca.text(), self.campModelo.text(), self.campTipo.text(), self.campCateg.text(), self.campAnoF.text(), self.campPlaca.text(), self.campChassi.text(), self.campRenavam.text(), self.campCapPassag.text(), self.campPortas.text(), self.campPotencia.text(), self.campCilindradas.text())
+        if ((marca != "") and (modelo != "") and (cor != "") and (categ != "") and (anoF != "") and (placa != "") and (chassi != "") and (renavam != "") and (capPassag != "") and (portas != "") and (potencia != "") and (cilindradas != "")):
+            return Veiculo(-1, self.campMarca.text(), self.campModelo.text(), self.campCor.text(), self.campCateg.text(), self.campAnoF.text(), self.campPlaca.text(), self.campChassi.text(), self.campRenavam.text(), self.campCapPassag.text(), self.campPortas.text(), self.campPotencia.text(), self.campCilindradas.text())
         return None
 
     def limparCampos(self):
         self.veiculoAtual = None
         self.campMarca.setText("")
         self.campModelo.setText("")
-        self.campTipo.setText("")
+        self.campCor.setText("")
         self.campCateg.setText("")
         self.campAnoF.setText("")
         self.campPlaca.setText("")
@@ -73,7 +73,7 @@ class CadVeiculos(QWidget):
         self.veiculoAtual = veiculo
         self.campMarca.setText(veiculo.marca) 
         self.campModelo.setText(veiculo.modelo)
-        self.campTipo.setText(veiculo.tipo)
+        self.campCor.setText(veiculo.cor)
         self.campCateg.setText(veiculo.categ)
         self.campAnoF.setText(veiculo.anoFab)
         self.campPlaca.setText(veiculo.placa)

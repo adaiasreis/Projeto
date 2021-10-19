@@ -62,28 +62,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QComboBox" name="comboTipo">
-            <item>
-             <property name="text">
-              <string>Selecione</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>Seguro</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>Serviço</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>Taxa Expecial</string>
-             </property>
-            </item>
-           </widget>
+           <widget class="QComboBox" name="comboTipo"/>
           </item>
           <item>
            <layout class="QGridLayout" name="gridLayout_3">
@@ -95,10 +74,10 @@
              </widget>
             </item>
             <item row="3" column="0">
-             <widget class="QLineEdit" name="campIden"/>
+             <widget class="QLineEdit" name="campIdent"/>
             </item>
             <item row="3" column="1">
-             <widget class="QLineEdit" name="campVal"/>
+             <widget class="QLineEdit" name="campValor"/>
             </item>
             <item row="2" column="0">
              <widget class="QLabel" name="label_2">
@@ -130,7 +109,7 @@
          <item row="0" column="3">
           <widget class="QPushButton" name="b_novo">
            <property name="text">
-            <string>Salvar</string>
+            <string>Adicionar</string>
            </property>
           </widget>
          </item>

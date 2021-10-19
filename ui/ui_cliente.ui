@@ -6,16 +6,16 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>548</width>
-    <height>432</height>
+    <width>520</width>
+    <height>481</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Cadastro de Clientes</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout_4">
+  <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>
-    <layout class="QVBoxLayout" name="verticalLayout_3">
+    <layout class="QVBoxLayout" name="verticalLayout">
      <item>
       <layout class="QGridLayout" name="gridLayout_4">
        <item row="0" column="0">
@@ -41,7 +41,7 @@
       </layout>
      </item>
      <item>
-      <layout class="QFormLayout" name="formLayout">
+      <layout class="QGridLayout" name="gridLayout_5">
        <item row="0" column="0">
         <widget class="QLabel" name="label_2">
          <property name="text">
@@ -55,12 +55,15 @@
       </layout>
      </item>
      <item>
-      <widget class="QGroupBox" name="groupBox">
-       <property name="title">
-        <string>RG</string>
+      <layout class="QGridLayout" name="gridLayout_7">
+       <property name="verticalSpacing">
+        <number>0</number>
        </property>
-       <layout class="QVBoxLayout" name="verticalLayout">
-        <item>
+       <item row="0" column="0">
+        <widget class="QGroupBox" name="groupBox">
+         <property name="title">
+          <string>RG</string>
+         </property>
          <layout class="QGridLayout" name="gridLayout">
           <item row="0" column="0">
            <widget class="QLabel" name="label_3">
@@ -69,12 +72,8 @@
             </property>
            </widget>
           </item>
-          <item row="0" column="1">
-           <widget class="QLabel" name="label_4">
-            <property name="text">
-             <string>Orgão Expedidor/UF</string>
-            </property>
-           </widget>
+          <item row="1" column="1">
+           <widget class="QLineEdit" name="campRgo"/>
           </item>
           <item row="0" column="2">
            <widget class="QLabel" name="label_5">
@@ -86,24 +85,24 @@
           <item row="1" column="0">
            <widget class="QLineEdit" name="campRgn"/>
           </item>
-          <item row="1" column="1">
-           <widget class="QLineEdit" name="campRgo"/>
-          </item>
           <item row="1" column="2">
            <widget class="QLineEdit" name="campRgd"/>
           </item>
+          <item row="0" column="1">
+           <widget class="QLabel" name="label_4">
+            <property name="text">
+             <string>Orgão Expedidor/UF</string>
+            </property>
+           </widget>
+          </item>
          </layout>
-        </item>
-       </layout>
-      </widget>
-     </item>
-     <item>
-      <widget class="QGroupBox" name="groupBox_2">
-       <property name="title">
-        <string>CNH</string>
-       </property>
-       <layout class="QVBoxLayout" name="verticalLayout_2">
-        <item>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QGroupBox" name="groupBox_2">
+         <property name="title">
+          <string>CNH</string>
+         </property>
          <layout class="QGridLayout" name="gridLayout_2">
           <item row="0" column="0">
            <widget class="QLabel" name="label_8">
@@ -136,55 +135,51 @@
            <widget class="QLineEdit" name="campChd"/>
           </item>
          </layout>
-        </item>
-       </layout>
-      </widget>
-     </item>
-     <item>
-      <layout class="QHBoxLayout" name="horizontalLayout">
-       <item>
-        <widget class="QLabel" name="label_9">
-         <property name="text">
-          <string>CPF</string>
-         </property>
         </widget>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="campCpf"/>
-       </item>
-       <item>
-        <widget class="QLabel" name="label_11">
-         <property name="text">
-          <string>Telefone</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="campTelefone"/>
        </item>
       </layout>
      </item>
      <item>
       <layout class="QGridLayout" name="gridLayout_3">
-       <item row="0" column="3">
+       <item row="1" column="3">
         <widget class="QLineEdit" name="campEmail"/>
        </item>
-       <item row="0" column="0">
+       <item row="1" column="0">
         <widget class="QLabel" name="label_10">
          <property name="text">
           <string>Data de Nascimento</string>
          </property>
         </widget>
        </item>
-       <item row="0" column="1">
-        <widget class="QLineEdit" name="campNasc"/>
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_9">
+         <property name="text">
+          <string>CPF</string>
+         </property>
+        </widget>
        </item>
-       <item row="0" column="2">
+       <item row="1" column="2">
         <widget class="QLabel" name="label_12">
          <property name="text">
           <string>Email</string>
          </property>
         </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLineEdit" name="campNasc"/>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLineEdit" name="campCpf"/>
+       </item>
+       <item row="0" column="2">
+        <widget class="QLabel" name="label_11">
+         <property name="text">
+          <string>Telefone</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="3">
+        <widget class="QLineEdit" name="campTelefone"/>
        </item>
       </layout>
      </item>
@@ -227,7 +222,7 @@
        <item row="0" column="3">
         <widget class="QPushButton" name="b_novo">
          <property name="text">
-          <string>Salvar</string>
+          <string>Adicionar</string>
          </property>
         </widget>
        </item>
@@ -261,15 +256,12 @@
   </layout>
  </widget>
  <tabstops>
-  <tabstop>campNome</tabstop>
   <tabstop>campRgn</tabstop>
   <tabstop>campRgo</tabstop>
   <tabstop>campRgd</tabstop>
   <tabstop>campChn</tabstop>
   <tabstop>campChc</tabstop>
   <tabstop>campChd</tabstop>
-  <tabstop>campCpf</tabstop>
-  <tabstop>campTelefone</tabstop>
   <tabstop>campNasc</tabstop>
   <tabstop>campEmail</tabstop>
   <tabstop>campEndereco</tabstop>

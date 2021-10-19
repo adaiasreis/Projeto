@@ -1,4 +1,5 @@
 from PyQt5.QtWidgets import QWidget
+from PyQt5.QtCore import QDateTime
 from PyQt5 import uic
 
 from components.table_locacoes import TableWidget
@@ -12,9 +13,12 @@ class CadLocacoes(QWidget):
         self.table = TableWidget(self)
         self.verticalLayout.addWidget(self.table)
 
-        self.setEventos()
-
         self.locacaoAtual = None
+
+        self.dataInic.setDateTime(QDateTime.currentDateTime())
+        self.dataFinal.setDateTime(QDateTime.currentDateTime())
+
+        self.setEventos()
 
     def setEventos(self):
         self.b_novo.clicked.connect(self.addLocacao)
@@ -47,40 +51,40 @@ class CadLocacoes(QWidget):
         return None
 
     def limparCampos(self):
-        self.funcionarioAtual = None
-        self.dataInic.text("")
+        self.locacaoAtual = None
+        self.dataInic.setText("")
         self.comboVeiculo.currentText("")
         self.comboCliente.currentText("")
-        self.campKmInic.text("")
-        self.horaIn.text("")
-        self.compKmEstim.text("")
+        self.campKmInic.setText("")
+        self.horaIn.setText("")
+        self.compKmEstim.setText("")
         self.comboSeguro.currentText("")
         self.comboTaxa.currentText("")
-        self.campValorPagar.text("")
-        self.g_status.text("")
-        self.dataFinal.text("")
-        self.campKmEnt.text("")
-        self.campInform.text("")
+        self.campValorPagar.setText("")
+        self.g_status.setText("")
+        self.dataFinal.setText("")
+        self.campKmEnt.setText("")
+        self.campInform.setText("")
 
         self.b_novo.setText("Adicionar")
         self.b_excluir.setEnabled(False)
         self.b_limpar.setEnabled(False)
 
     def insereLocacao(self, locacao):
-        self.funcionarioAtual = locacao
-        self.dataInic.text(locacao.dataLoc)
+        self.locacaoAtual = locacao
+        self.dataInic.setText(locacao.dataLoc)
         self.comboVeiculo.currentText(locacao.veiculo)
         self.comboCliente.currentText(locacao.cliente)
-        self.campKmInic.text(locacao.kmAtual)
-        self.horaIn.text(locacao.hora)
-        self.compKmEstim.text(locacao.kmEstim)
+        self.campKmInic.setText(locacao.kmAtual)
+        self.horaIn.setText(locacao.hora)
+        self.compKmEstim.setText(locacao.kmEstim)
         self.comboSeguro.currentText(locacao.seguro)
         self.comboTaxa.currentText(locacao.taxa)
-        self.campValorPagar.text(locacao.valorLoc)
-        self.g_status.text(locacao.status)
-        self.dataFinal.text(locacao.dataEnt)
-        self.campKmEnt.text(locacao.kmEnt)
-        self.campInform.text(locacao.infoEnt)
+        self.campValorPagar.setText(locacao.valorLoc)
+        self.g_status.setText(locacao.status)
+        self.dataFinal.setText(locacao.dataEnt)
+        self.campKmEnt.setText(locacao.kmEnt)
+        self.campInform.setText(locacao.infoEnt)
 
         self.b_novo.setText("Atualizar")
         self.b_excluir.setEnabled(True)

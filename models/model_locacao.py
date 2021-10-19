@@ -63,9 +63,9 @@ def addLocacao(locacao):
 def editLocacao(locacao):
     conn = db.connect_db()
     cursor = conn.cursor()
-    sql = ("UPDATE Locacoes SET dataLoc=?, veiculo=?, cliente=?, kmAtual=?, hora=?, kmEstim=?, seguro=?, taxa=?, valorLoc=?, status=?, dataEnt=?, kmEnt=?, infoEnt=?")
+    sql = ("UPDATE Locacoes SET dataLoc=?, veiculo=?, cliente=?, kmAtual=?, hora=?, kmEstim=?, seguro=?, taxa=?, valorLoc=?, status=?, dataEnt=?, kmEnt=?, infoEnt=? WHERE id=?")
     cursor.execute(sql, [locacao.dataLoc, locacao.veiculo, locacao.cliente, locacao.kmAtual, locacao.hora, locacao.kmEstim, locacao.seguro, locacao.taxa, locacao.valorLoc,
-        locacao.status, locacao.dataEnt, locacao.kmEnt, locacao.infoEnt])
+        locacao.status, locacao.dataEnt, locacao.kmEnt, locacao.infoEnt, locacao.id])
     conn.commit()
     conn.close()
 

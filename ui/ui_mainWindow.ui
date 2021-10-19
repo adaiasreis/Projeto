@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>492</width>
+    <width>547</width>
     <height>442</height>
    </rect>
   </property>
@@ -17,7 +17,7 @@
    </sizepolicy>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>LocCar - Sistema Integrado de Informações</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -38,8 +38,11 @@
       <property name="flow">
        <enum>QListView::LeftToRight</enum>
       </property>
+      <property name="resizeMode">
+       <enum>QListView::Adjust</enum>
+      </property>
       <property name="spacing">
-       <number>5</number>
+       <number>7</number>
       </property>
       <item>
        <property name="text">
@@ -63,7 +66,7 @@
       </item>
       <item>
        <property name="text">
-        <string>Serviços</string>
+        <string>Ocorrências</string>
        </property>
       </item>
       <item>
@@ -88,7 +91,16 @@
     </item>
    </layout>
   </widget>
-  <widget class="QStatusBar" name="statusBar"/>
+  <widget class="QStatusBar" name="statusBar">
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+     <weight>50</weight>
+     <italic>true</italic>
+     <bold>false</bold>
+    </font>
+   </property>
+  </widget>
   <action name="actionCadastrar">
    <property name="text">
     <string>Cadastrar</string>
