@@ -94,7 +94,11 @@
          <widget class="QLineEdit" name="campRgo"/>
         </item>
         <item row="1" column="2">
-         <widget class="QLineEdit" name="campRgd"/>
+         <widget class="QLineEdit" name="campRgd">
+          <property name="inputMask">
+           <string>99\/99\/9999</string>
+          </property>
+         </widget>
         </item>
        </layout>
       </widget>
@@ -116,10 +120,21 @@
         </widget>
        </item>
        <item row="0" column="1">
-        <widget class="QLineEdit" name="campCpf"/>
+        <widget class="QLineEdit" name="campCpf">
+         <property name="inputMask">
+          <string>999.999.999-99</string>
+         </property>
+         <property name="maxLength">
+          <number>14</number>
+         </property>
+        </widget>
        </item>
        <item row="0" column="3">
-        <widget class="QLineEdit" name="campTelefone"/>
+        <widget class="QLineEdit" name="campTelefone">
+         <property name="inputMask">
+          <string>\(99\) 99999 9999</string>
+         </property>
+        </widget>
        </item>
        <item row="0" column="0">
         <widget class="QLabel" name="label_9">
@@ -129,7 +144,11 @@
         </widget>
        </item>
        <item row="1" column="1">
-        <widget class="QLineEdit" name="campNasc"/>
+        <widget class="QLineEdit" name="campNasc">
+         <property name="inputMask">
+          <string>99\/99\/9999</string>
+         </property>
+        </widget>
        </item>
        <item row="1" column="3">
         <widget class="QLineEdit" name="campEmail"/>
@@ -286,6 +305,8 @@
   <tabstop>campRgn</tabstop>
   <tabstop>campRgo</tabstop>
   <tabstop>campRgd</tabstop>
+  <tabstop>campCpf</tabstop>
+  <tabstop>campTelefone</tabstop>
   <tabstop>campNasc</tabstop>
   <tabstop>campEmail</tabstop>
   <tabstop>campEndereco</tabstop>

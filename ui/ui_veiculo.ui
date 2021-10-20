@@ -94,10 +94,18 @@
         </widget>
        </item>
        <item row="1" column="2">
-        <widget class="QLineEdit" name="campChassi"/>
+        <widget class="QLineEdit" name="campChassi">
+         <property name="inputMask">
+          <string>&gt;N NN NNNNNN N NNNNNNN</string>
+         </property>
+        </widget>
        </item>
        <item row="1" column="1">
-        <widget class="QLineEdit" name="campPlaca"/>
+        <widget class="QLineEdit" name="campPlaca">
+         <property name="inputMask">
+          <string>AAA-9A99</string>
+         </property>
+        </widget>
        </item>
        <item row="0" column="1">
         <widget class="QLabel" name="label_4">
@@ -121,7 +129,11 @@
         </widget>
        </item>
        <item row="1" column="3">
-        <widget class="QLineEdit" name="campRenavam"/>
+        <widget class="QLineEdit" name="campRenavam">
+         <property name="maxLength">
+          <number>11</number>
+         </property>
+        </widget>
        </item>
        <item row="1" column="0">
         <widget class="QLineEdit" name="campAnoF"/>

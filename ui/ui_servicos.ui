@@ -145,6 +145,9 @@
   </layout>
  </widget>
  <tabstops>
+  <tabstop>comboTipo</tabstop>
+  <tabstop>campIdent</tabstop>
+  <tabstop>campValor</tabstop>
   <tabstop>b_novo</tabstop>
   <tabstop>b_limpar</tabstop>
   <tabstop>b_excluir</tabstop>

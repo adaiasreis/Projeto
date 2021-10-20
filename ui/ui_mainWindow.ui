@@ -6,12 +6,12 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>547</width>
-    <height>442</height>
+    <width>807</width>
+    <height>291</height>
    </rect>
   </property>
   <property name="sizePolicy">
-   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
@@ -24,7 +24,7 @@
     <item>
      <widget class="QListWidget" name="listWidget">
       <property name="sizePolicy">
-       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+       <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
@@ -35,6 +35,9 @@
         <height>30</height>
        </size>
       </property>
+      <property name="lineWidth">
+       <number>1</number>
+      </property>
       <property name="flow">
        <enum>QListView::LeftToRight</enum>
       </property>
@@ -44,50 +47,135 @@
       <property name="spacing">
        <number>7</number>
       </property>
+      <property name="viewMode">
+       <enum>QListView::ListMode</enum>
+      </property>
+      <property name="modelColumn">
+       <number>0</number>
+      </property>
       <item>
        <property name="text">
         <string>Inicio</string>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>11</pointsize>
+        </font>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>../icons/home_icon-icons.com_73532.png</normaloff>../icons/home_icon-icons.com_73532.png</iconset>
        </property>
       </item>
       <item>
        <property name="text">
         <string>Veículo</string>
        </property>
+       <property name="font">
+        <font>
+         <pointsize>11</pointsize>
+        </font>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>../icons/car_transport_vehicle_icon_123456.png</normaloff>../icons/car_transport_vehicle_icon_123456.png</iconset>
+       </property>
       </item>
       <item>
        <property name="text">
         <string>Cliente</string>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>11</pointsize>
+        </font>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>../icons/business_application_addmale_useradd_insert_add_user_client_2312.png</normaloff>../icons/business_application_addmale_useradd_insert_add_user_client_2312.png</iconset>
        </property>
       </item>
       <item>
        <property name="text">
         <string>Funcionário</string>
        </property>
+       <property name="font">
+        <font>
+         <pointsize>11</pointsize>
+        </font>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>../icons/Collaborator_icon-icons.com_55941.png</normaloff>../icons/Collaborator_icon-icons.com_55941.png</iconset>
+       </property>
       </item>
       <item>
        <property name="text">
         <string>Ocorrências</string>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>11</pointsize>
+        </font>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>../icons/3592829-calendar-general-month-month-calendar-office-schedule-wall-calendar_107756.png</normaloff>../icons/3592829-calendar-general-month-month-calendar-office-schedule-wall-calendar_107756.png</iconset>
        </property>
       </item>
       <item>
        <property name="text">
         <string>Locação</string>
        </property>
+       <property name="font">
+        <font>
+         <pointsize>11</pointsize>
+        </font>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>../icons/travel_car_BMV_1741.png</normaloff>../icons/travel_car_BMV_1741.png</iconset>
+       </property>
       </item>
       <item>
        <property name="text">
         <string>Ajuda</string>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>11</pointsize>
+        </font>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>../icons/help_98417.png</normaloff>../icons/help_98417.png</iconset>
        </property>
       </item>
       <item>
        <property name="text">
         <string>Sobre</string>
        </property>
+       <property name="font">
+        <font>
+         <pointsize>11</pointsize>
+        </font>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>../icons/about_3697.png</normaloff>../icons/about_3697.png</iconset>
+       </property>
       </item>
      </widget>
     </item>
     <item>
-     <widget class="QStackedWidget" name="stackedWidget"/>
+     <widget class="QStackedWidget" name="stackedWidget">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+     </widget>
     </item>
    </layout>
   </widget>
