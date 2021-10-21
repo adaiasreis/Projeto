@@ -13,7 +13,7 @@ class FazerLogin(QWidget):
         self.setEventos()
 
     def setEventos(self):
-        self.b_entrar.clicked.connect(self.fazerLogin)
+        self.b_entrar.clicked.connect('<Return>', self.fazerLogin)
         self.b_sair.clicked.connect(self.Sair)
 
     def fazerLogin(self):

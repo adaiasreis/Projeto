@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QWidget
+from PyQt5.QtWidgets import QWidget, QTabWidget, QVBoxLayout
 from PyQt5.QtCore import QDateTime
 from PyQt5 import uic
 
@@ -21,7 +21,7 @@ class CadLocacoes(QWidget):
         self.setEventos()
 
     def setEventos(self):
-        self.b_novo.clicked.connect(self.addLocacao)
+        self.b_reserva.clicked.connect(self.addLocacao)
         self.b_limpar.clicked.connect(self.limparCampos)
 
     def addLocacao(self):
@@ -89,3 +89,57 @@ class CadLocacoes(QWidget):
         self.b_novo.setText("Atualizar")
         self.b_excluir.setEnabled(True)
         self.b_limpar.setEnabled(True)
+
+class MyTabWidget(QWidget):
+    def __init__(self, parent = None):
+        super(MyTabWidget, self).__init__(parent)
+
+        self.setTabIndex(0)
+
+        self.tab1 = QWidget()
+        self.tab2 = QWidget()
+        self.tab3 = QWidget()
+            
+        self.addTab(self.tab1,"Tab 1")
+        self.addTab(self.tab2,"Tab 2")
+        self.addTab(self.tab3,"Tab 3")
+        self.tab1UI()
+        self.tab2UI()
+        self.tab3UI()
+		
+    def tab1UI(self):
+
+        self.setTabText(0,"Reserva")
+            
+    def tab2UI(self):
+        self.setTabText(1,"Locação")
+            
+    def tab3UI(self):
+      self.setTabText(2,"Tabela de Preços")
+
+"""class MyTabWidget(QWidget):
+    def __init__(self, parent):
+        super(QWidget, self).__init__(parent)
+        self.layout = QVBoxLayout(self)
+  
+        # Initialize tab screen
+        self.tabs = QTabWidget()
+        self.tab1 = QWidget()
+        self.tab2 = QWidget()
+        self.tab3 = QWidget()
+  
+        # Add tabs
+        self.tabs.addTab(self.tab1, "Geeks")
+        self.tabs.addTab(self.tab2, "For")
+        self.tabs.addTab(self.tab3, "Geeks")
+  
+        # Create first tab
+        self.tab1.layout = QVBoxLayout(self)
+        self.l = QLabel()
+        self.l.setText("This is the first tab")
+        self.tab1.layout.addWidget(self.l)
+        self.tab1.setLayout(self.tab1.layout)
+  
+        # Add tabs to widget
+        self.layout.addWidget(self.tabs)
+        self.setLayout(self.layout)"""

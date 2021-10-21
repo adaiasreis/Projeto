@@ -24,7 +24,9 @@ class CadFuncionarios(QWidget):
         self.b_excluir.clicked.connect(self.excluirItem)
 
     def addFunc(self):
-        novoFuncionario = self.getFunc()
+        novoFuncionario = self.getFuncs()
+        print(novoFuncionario)
+        print(self.funcionarioAtual)
         if novoFuncionario != None:
             if self.funcionarioAtual == None:
                 self.table.add(novoFuncionario)
@@ -33,7 +35,7 @@ class CadFuncionarios(QWidget):
                 self.table.update(novoFuncionario)
             self.limparCampos()
 
-    def getFunc(self):
+    def getFuncs(self):
         nome = self.campNome.text()
         rgNum = self.campRgn.text()
         orgaoExp = self.campRgo.text()
@@ -93,6 +95,7 @@ class CadFuncionarios(QWidget):
         self.campSalario.setText(str(funcionario.salario))
         self.campCarga.setText(str(funcionario.cargahs))
         self.campUsuario.setText(funcionario.usuario)
+        self.campSenha.setText(funcionario.senha)
 
         self.b_novo.setText("Atualizar")
         self.b_excluir.setEnabled(True)
@@ -111,7 +114,7 @@ class CadFuncionarios(QWidget):
     def messageError(self):
         em = QMessageBox()
         em.setIcon(QMessageBox.Information)
-        em.setText("A exclusão não foi permitida porque a tabela de Funcionários não pode ficar vazia. Para completar esta ação, por favor cadastre um novo funcionário.")
+        em.setText("A exclusão não foi permitida porque a tabela de Funcionários não pode ser vazia. Para completar esta ação, por favor cadastre um novo funcionário.")
         em.setInformativeText("Para mais informações, consulte o menu Ajuda")
         em.setWindowTitle("Exclusão Não Permitida")
         em.exec()
