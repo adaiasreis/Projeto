@@ -1,17 +1,22 @@
 #Classe locação
-class Locacao:
-    def __init__ (self, id, dataLoc, veiculo, cliente, kmAtual, hora, kmEstim, seguro, taxa, valorLoc, status, dataEnt, kmEnt, infoEnt):
+class Reserva:
+    def __init__ (self, id, cliente, plano, tipo, veiculo, data_inic, data_fim, status):
         self.id = id
-        self.dataLoc = dataLoc
+        self.cliente = cliente
+        self.plano = plano
+        self.tipo = tipo
         self.veiculo = veiculo
+        self.data_inic = data_inic
+        self.data_fim = data_fim
+        self.status = status
+
+class Locacao:
+    def __init__(self, id, cliente, kmAtual, estim, seguro, taxa, servicos, valorLoc):
+        self.id = id
         self.cliente = cliente
         self.kmAtual = kmAtual
-        self.hora = hora
-        self.kmEstim = kmEstim
+        self.estim = estim
         self.seguro = seguro
         self.taxa = taxa
-        self. valorLoc = valorLoc
-        self.status = status
-        self.dataEnt = dataEnt
-        self. kmEnt = kmEnt
-        self.infoEnt = infoEnt
+        self.servicos = servicos
+        self.valorLoc = valorLoc

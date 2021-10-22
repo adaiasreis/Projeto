@@ -1,6 +1,6 @@
-from PyQt5.QtWidgets import QWidget, QApplication
+from PyQt5.QtWidgets import QWidget
 from PyQt5 import uic
-import sys
+from tkinter import *
 
 from layouts.ui_mainWindow import MainWindow
 import models.model_funcionario as Funcionarios
@@ -10,11 +10,17 @@ class FazerLogin(QWidget):
         super().__init__()
         uic.loadUi("ui/ui_telaLogin.ui",self)
 
+        self.into = Tk()
+
         self.setEventos()
 
     def setEventos(self):
-        self.b_entrar.clicked.connect('<Return>', self.fazerLogin)
+        self.b_entrar.clicked.connect(self.fazerLogin)
         self.b_sair.clicked.connect(self.Sair)
+
+    def clicker(self):
+        self.into.bind('<Return>', self.fazerLogin())
+
 
     def fazerLogin(self):
 
@@ -28,7 +34,6 @@ class FazerLogin(QWidget):
             senha = self.campSenha.text()
 
             self.login = Funcionarios.getLogin(usuario, senha)
-            print(self.login)
             
             if  len(self.login) > 0:
                 self.scre = MainWindow(self, self.login[0])

@@ -6,7 +6,7 @@ from layouts.ui_veiculo import CadVeiculos
 from layouts.ui_cliente import CadClientes
 from layouts.ui_funcionario import CadFuncionarios
 from layouts.ui_ocorrencia import CadOcorrencias
-from layouts.ui_locacao import CadLocacoes
+from layouts.ui_locacao import MyTabWidget
 from layouts.ui_ajuda import Ajuda
 from layouts.ui_sobre import Sobre
 
@@ -32,7 +32,7 @@ class MainWindow(QMainWindow):
         self.stackedWidget.insertWidget(2, CadClientes())
         self.stackedWidget.insertWidget(3, CadFuncionarios())
         self.stackedWidget.insertWidget(4, CadOcorrencias())
-        self.stackedWidget.insertWidget(5, CadLocacoes())
+        self.stackedWidget.insertWidget(5, MyTabWidget())
         self.stackedWidget.insertWidget(6, Ajuda())
         self.stackedWidget.insertWidget(7, Sobre())
 

@@ -8,20 +8,15 @@ def getLocacoes():
     lista_locacaoes = []
     for l in cursor.fetchall():
         id = l[0]
-        dataLoc = l[1]
-        veiculo = l[2]
-        cliente = l[3]
-        kmAtual = l[4]
-        hora = l[5]
-        kmEstim = l[6]
-        seguro = l[7]
-        taxa = l[8]
-        valorLoc = l[9]
-        status = l[10]
-        dataEnt = l[11]
-        kmEnt = l[12]
-        infoEnt = l[13]
-        nova = Locacao(id, dataLoc, veiculo, cliente, kmAtual, hora, kmEstim, seguro, taxa, valorLoc, status, dataEnt, kmEnt, infoEnt)
+        id_res = l[1]
+        kmAtual = l[2]
+        kmEstim = l[3]
+        seguro = l[4]
+        taxa = l[5]
+        servicos = l[6]
+        valorLoc = l[7]
+        status = l[8]
+        nova = Locacao(id, id_res, kmAtual,kmEstim, seguro, taxa, servicos, valorLoc, status)
         lista_locacaoes.append(nova)
     conn.close()
     return lista_locacaoes
@@ -33,39 +28,34 @@ def getLocacao(id):
     cursor.execute(sql, [id])  
     l = cursor.fetchall()[0]
     id = l[0]
-    dataLoc = l[1]
-    veiculo = l[2]
-    cliente = l[3]
-    kmAtual = l[4]
-    hora = l[5]
-    kmEstim = l[6]
-    seguro = l[7]
-    taxa = l[8]
-    valorLoc = l[9]
-    status = l[10]
-    dataEnt = l[11]
-    kmEnt = l[12]
-    infoEnt = l[13]
-    novo = Locacao(id, dataLoc, veiculo, cliente, kmAtual, hora, kmEstim, seguro, taxa, valorLoc, status, dataEnt, kmEnt, infoEnt)
+    id_res = l[1]
+    kmAtual = l[2]
+    kmEstim = l[3]
+    seguro = l[4]
+    taxa = l[5]
+    servicos = l[6]
+    valorLoc = l[7]
+    status = l[8]
+    novo = Locacao(id, id_res,kmAtual,kmEstim, seguro, taxa, servicos, valorLoc, status,)
     conn.close()
     return novo
 
 def addLocacao(locacao):
     conn = db.connect_db()
     cursor = conn.cursor()
-    sql = """INSERT INTO Locacoes (dataLoc, veiculo, cliente, kmAtual, hora, kmEstim, seguro, taxa, valorLoc, status, dataEnt, kmEnt, infoEnt)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"""
-    cursor.execute(sql, [locacao.dataLoc, locacao.veiculo, locacao.cliente, locacao.kmAtual, locacao.hora, locacao.kmEstim, locacao.seguro, locacao.taxa,
-        locacao.valorLoc, locacao.status, locacao.dataEnt, locacao.kmEnt, locacao.infoEnt])
+    sql = """INSERT INTO Locacoes (id_res, kmAtual, kmEstim, seguro, taxa, servicos, valorLoc, status)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)"""
+    cursor.execute(sql, [locacao.id_res, locacao.kmAtual, locacao.kmEstim, locacao.seguro, locacao.taxa,
+        locacao.servicos, locacao.valorLoc, locacao.status])
     conn.commit()
     conn.close()
 
 def editLocacao(locacao):
     conn = db.connect_db()
     cursor = conn.cursor()
-    sql = ("UPDATE Locacoes SET dataLoc=?, veiculo=?, cliente=?, kmAtual=?, hora=?, kmEstim=?, seguro=?, taxa=?, valorLoc=?, status=?, dataEnt=?, kmEnt=?, infoEnt=? WHERE id=?")
-    cursor.execute(sql, [locacao.dataLoc, locacao.veiculo, locacao.cliente, locacao.kmAtual, locacao.hora, locacao.kmEstim, locacao.seguro, locacao.taxa, locacao.valorLoc,
-        locacao.status, locacao.dataEnt, locacao.kmEnt, locacao.infoEnt, locacao.id])
+    sql = ("UPDATE Locacoes SET id_res=?, kmAtual=?, kmEstim=?, seguro=?, taxa=?, servicos=?, valorLoc=?, status=? WHERE id=?")
+    cursor.execute(sql, [locacao.id_res, locacao.kmAtual, locacao.kmEstim, locacao.seguro, locacao.taxa, locacao.servicos, locacao.valorLoc,
+        locacao.status, locacao.id])
     conn.commit()
     conn.close()
 
