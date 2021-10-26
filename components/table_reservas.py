@@ -1,12 +1,12 @@
 from PyQt5.QtWidgets import QHeaderView, QTableWidget, QTableWidgetItem
-import models.model_locacao as Locacoes
+import models.model_reservas as Reservas
 
-class TableLocacao(QTableWidget):
+class TableReserva(QTableWidget):
     def __init__(self, parent):
         super().__init__(0, 5)
         self.parent = parent
 
-        headers = ["CLIENTE","VEÍCULO","USO ESTIMADO (KM)", "DATA PREV RETORNO","STATUS"]
+        headers = ["CLIENTE","TIPO DA LOCAÇÃO","VEÍCULO","DATA PREVISTA","STATUS"]
         self.setHorizontalHeaderLabels(headers)
 
         self.configTable()
@@ -18,8 +18,8 @@ class TableLocacao(QTableWidget):
         # ajusta as colunas ao tamanho da tela
         self.horizontalHeader().setStretchLastSection(False)
         self.horizontalHeader().setSectionResizeMode(0,QHeaderView.Stretch)
-        self.horizontalHeader().setSectionResizeMode(1,QHeaderView.Stretch)
-        self.horizontalHeader().setSectionResizeMode(2,QHeaderView.ResizeToContents)
+        self.horizontalHeader().setSectionResizeMode(1,QHeaderView.ResizeToContents)
+        self.horizontalHeader().setSectionResizeMode(2,QHeaderView.Stretch)
         self.horizontalHeader().setSectionResizeMode(3,QHeaderView.ResizeToContents)
         self.horizontalHeader().setSectionResizeMode(4,QHeaderView.ResizeToContents)
         # Alterna as cores das linhas
@@ -32,10 +32,10 @@ class TableLocacao(QTableWidget):
         self.clicked.connect(self.on_click)
     
     def carregaDados(self):
-        self.lista_locacoes = Locacoes.getLocacoes()
+        self.lista_reservas = Reservas.getReservas()
         # necessário marcar a linha como a primeira para sobreescrever os dados da tabela
         self.setRowCount(0)
-        for locacao in self.lista_locacoes:
+        for locacao in self.lista_reservas:
             self._addRow(locacao)
 
     def _addRow(self, locacao):
@@ -49,29 +49,28 @@ class TableLocacao(QTableWidget):
         id_status = QTableWidgetItem(locacao.status)
         # insere os itens na tabela
         self.setItem(rowCount, 0, id_cliente)
-        self.setItem(rowCount, 1, id_tipo)
-        self.setItem(rowCount, 2, id_veiculo)
-        self.setItem(rowCount, 3, id_dataLoc)
-        self.setItem(rowCount, 4, id_status)
+        self.setItem(rowCount, 1, id_veiculo)
+        self.setItem(rowCount, 2, id_dataLoc)
+        self.setItem(rowCount, 3, id_status)
 
     def on_click(self):
         selected_row = self.currentRow()
         id = self.item(selected_row, 0).text()
-        locacao = Locacoes.getLocacao(id)
-        self.parent.insereLocacao(locacao)
+        reserva = Reservas.getReserva(id)
+        self.parent.insereReserva(reserva)
     
     # funções para adicionar no banco de dados
-    def add(self, locacao):
-        Locacoes.addLocacao(locacao)
+    def add(self, reserva):
+        Reservas.addReserva(reserva)
         # Carrega os dados do banco
         self.carregaDados()
 
-    def update(self, locacao):
-        Locacoes.editLocacao(locacao)
+    def update(self, reserva):
+        Reservas.editReserva(reserva)
         # Carrega os dados do banco
         self.carregaDados()
 
-    def delete(self, locacao):
-        Locacoes.delLocacao(locacao.id)
+    def delete(self, reserva):
+        Reservas.delReserva(reserva.id)
         # Carrega os dados do banco
         self.carregaDados()

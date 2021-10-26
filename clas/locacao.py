@@ -20,3 +20,7 @@ class Locacao:
         self.taxa = taxa
         self.servicos = servicos
         self.valorLoc = valorLoc
+
+class Checkout:
+
+    pass

@@ -34,7 +34,7 @@ class FazerLogin(QWidget):
             senha = self.campSenha.text()
 
             self.login = Funcionarios.getLogin(usuario, senha)
-            
+
             if  len(self.login) > 0:
                 self.scre = MainWindow(self, self.login[0])
                 self.scre.show()

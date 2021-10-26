@@ -1,4 +1,6 @@
-from PyQt5.QtWidgets import QMainWindow
+from datetime import datetime as dt
+from PyQt5.QtWidgets import QMainWindow, QWidget
+from PyQt5.QtCore import QDateTime, QDate, Qt
 from PyQt5 import uic
 
 from layouts.ui_inicio import Inicio
@@ -6,7 +8,7 @@ from layouts.ui_veiculo import CadVeiculos
 from layouts.ui_cliente import CadClientes
 from layouts.ui_funcionario import CadFuncionarios
 from layouts.ui_ocorrencia import CadOcorrencias
-from layouts.ui_locacao import MyTabWidget
+from layouts.ui_reserva import CadReserva
 from layouts.ui_ajuda import Ajuda
 from layouts.ui_sobre import Sobre
 
@@ -18,13 +20,16 @@ class MainWindow(QMainWindow):
 
         self.usuarioAtual = usuarioAtual
 
-        self.listWidget.setCurrentRow(0)
+        now = dt.now()
+        data = now.strftime("%d/%m/%Y %H:%M:%S")
 
         self.carregarJanelas()
 
+        self.listWidget.setCurrentRow(0)
+
         self.listWidget.currentRowChanged.connect(self.display)
 
-        self.statusBar.showMessage("Seja bem vindo "+ self.usuarioAtual['nome'])
+        self.statusBar.showMessage("Seja bem vindo "+ self.usuarioAtual['nome'] + "  [" + data + "]")
 
     def carregarJanelas(self):
         self.stackedWidget.insertWidget(0, Inicio())
@@ -32,7 +37,7 @@ class MainWindow(QMainWindow):
         self.stackedWidget.insertWidget(2, CadClientes())
         self.stackedWidget.insertWidget(3, CadFuncionarios())
         self.stackedWidget.insertWidget(4, CadOcorrencias())
-        self.stackedWidget.insertWidget(5, MyTabWidget())
+        self.stackedWidget.insertWidget(5, CadReserva())
         self.stackedWidget.insertWidget(6, Ajuda())
         self.stackedWidget.insertWidget(7, Sobre())
 
@@ -44,3 +49,4 @@ class MainWindow(QMainWindow):
 
     def closeEvent(self, event):
         self.janelaLogin.show()
+        
