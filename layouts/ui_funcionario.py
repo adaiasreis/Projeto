@@ -25,8 +25,6 @@ class CadFuncionarios(QWidget):
 
     def addFunc(self):
         novoFuncionario = self.getFuncs()
-        print(novoFuncionario)
-        print(self.funcionarioAtual)
         if novoFuncionario != None:
             if self.funcionarioAtual == None:
                 self.table.add(novoFuncionario)
@@ -95,7 +93,7 @@ class CadFuncionarios(QWidget):
         self.campSalario.setText(str(funcionario.salario))
         self.campCarga.setText(str(funcionario.cargahs))
         self.campUsuario.setText(funcionario.usuario)
-        self.campSenha.setText(funcionario.senha)
+        self.campSenha.setText(str(funcionario.senha))
 
         self.b_novo.setText("Atualizar")
         self.b_excluir.setEnabled(True)

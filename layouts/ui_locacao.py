@@ -13,7 +13,7 @@ class CadLocacao(QWidget):
         uic.loadUi("ui/ui_locacao.ui", self)
 
         self.table = TableLocacao(self)
-        #self.verticalLayout.addWidget(self.table)
+        self.verticalLayout_2.addWidget(self.table)
 
         self.locacaoAtual = None
         self.reservaAtual = None
@@ -28,17 +28,17 @@ class CadLocacao(QWidget):
         lista_combo = []
         for r in self.lista_reservas:
             lista_combo.append(r.id)
-        self.comboId_res.addItems(lista_combo)
+        self.comboId.addItems(lista_combo)
 
     def setEventos(self):
-        self.comboId_res.currentIndexChanged.connect(self.index_changed_reserva)
+        self.comboId.currentIndexChanged.connect(self.index_changed_reserva)
         self.b_locar.clicked.connect(self.addLocacao)
         self.b_limpar_2.clicked.connect(self.limparCampos)
 
     def index_changed_reserva(self, i):
         self.reservaAtual = self.lista_reservas[i]
-        self.campCli_res.setText(self.reservaAtual.nome)
-        self.campVei_res.setText(self.reservaAtual.marca)
+        self.campCli.setText(self.reservaAtual.nome)
+        self.campVei.setText(self.reservaAtual.marca)
 
     def addLocacao(self):
         novoLocacao = self.getLocacao()
@@ -48,7 +48,7 @@ class CadLocacao(QWidget):
             self.limparCampos()
 
     def getLocacao(self):
-        id_res = self.comboId_reserva.currentText()
+        id_res = self.comboId.currentText()
         kmAtual = self.campKmInic.text()
         kmEstim = self.campKmEstim.text()
         seguro = self.comboSeguro.currentText()
@@ -58,13 +58,13 @@ class CadLocacao(QWidget):
         status = self.comboStatus.currentText()
 
         if ((id_res !="") and (kmAtual != "") and (kmEstim != "") and (seguro != "") and (taxa != "") and (servicos != "") and (valorLoc != "") and (status != "")):
-            return Locacao (-1, self.comboId_reserva.currentText(), self.campKmInic.text(), self.campKmEstim.text(), self.comboSeguro.currentText(), self.comboTaxas.currentText(),
+            return Locacao (-1, self.comboId.currentText(), self.campKmInic.text(), self.campKmEstim.text(), self.comboSeguro.currentText(), self.comboTaxas.currentText(),
                 self.groupServicos.currentText(), self.campValorPagar.text(), self.comboStatus.currentText())
         return None
 
     def limparCampos(self):
         self.locacaoAtual = None
-        self.comboId_reserva.currentText("")
+        self.comboId.currentText("")
         self.campKmInic.text("")
         self.campKmEstim.text("")
         self.comboSeguro.currentText("")
@@ -77,7 +77,7 @@ class CadLocacao(QWidget):
 
     def insereLocacao(self, locacao):
         self.locacaoAtual = locacao
-        self.comboId_reserva.currentText(locacao.id_reserva)
+        self.comboId.currentText(locacao.id_reserva)
         self.campKmInic.text(locacao.kmAtual)
         self.campKmEstim.text(locacao.kmEstim)
         self.comboSeguro.currentText(locacao.seguro)

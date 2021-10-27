@@ -3,10 +3,10 @@ import models.model_cliente as Clientes
 
 class TableWidget(QTableWidget):
     def __init__(self, parent):
-        super().__init__(0, 10)
+        super().__init__(0, 11)
         self.parent = parent
 
-        headers = ["ID","NOME","RG","CNH","CATEGORIA","CPF","TELEFONE","DATA NASC","EMAIL","NOME MÃE"]
+        headers = ["ID","NOME","RG","CNH","CATEGORIA","CPF","TELEFONE","DATA NASC","EMAIL","NOME MÃE","PLANO"]
         self.setHorizontalHeaderLabels(headers)
 
         self.configTable()
@@ -27,6 +27,7 @@ class TableWidget(QTableWidget):
         self.horizontalHeader().setSectionResizeMode(7,QHeaderView.ResizeToContents)
         self.horizontalHeader().setSectionResizeMode(8,QHeaderView.Stretch)
         self.horizontalHeader().setSectionResizeMode(9,QHeaderView.Stretch)
+        self.horizontalHeader().setSectionResizeMode(10,QHeaderView.ResizeToContents)
         # Alterna as cores das linhas
         self.setAlternatingRowColors(True)
         # desabilita a edição dos campos
@@ -57,6 +58,7 @@ class TableWidget(QTableWidget):
         id_nasc = QTableWidgetItem(cliente.nasc)
         id_email = QTableWidgetItem(cliente.email)
         id_nomeMae = QTableWidgetItem(cliente.nomeMae)
+        id_plano = QTableWidgetItem(cliente.plano)
         # insere os itens na tabela
         self.setItem(rowCount, 0, id_item)
         self.setItem(rowCount, 1, id_nome)
@@ -68,6 +70,7 @@ class TableWidget(QTableWidget):
         self.setItem(rowCount, 7, id_nasc)
         self.setItem(rowCount, 8, id_email)
         self.setItem(rowCount, 9, id_nomeMae)
+        self.setItem(rowCount, 10, id_plano)
 
     def on_click(self):
         selected_row = self.currentRow()

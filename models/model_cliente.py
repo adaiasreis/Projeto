@@ -21,7 +21,8 @@ def getClientes():
         email = c[11]
         endereco = c[12]
         nomeMae = c[13]
-        nova = Cliente(id, nome, rgNum, orgaoExp, rgDataEmis, cnhNum, categ, cnhDataEmis, cpf, telefone, nasc, email, endereco, nomeMae)
+        plano = c[14]
+        nova = Cliente(id, nome, rgNum, orgaoExp, rgDataEmis, cnhNum, categ, cnhDataEmis, cpf, telefone, nasc, email, endereco, nomeMae, plano)
         lista_clientes.append(nova)
     conn.close()
     return lista_clientes
@@ -46,26 +47,27 @@ def getCliente(id):
     email = c[11]
     endereco = c[12]
     nomeMae = c[13]
-    novo = Cliente(id, nome, rgNum, orgaoExp, rgDataEmis, cnhNum, categ, cnhDataEmis, cpf, telefone, nasc, email, endereco, nomeMae)
+    plano = c[14]
+    novo = Cliente(id, nome, rgNum, orgaoExp, rgDataEmis, cnhNum, categ, cnhDataEmis, cpf, telefone, nasc, email, endereco, nomeMae, plano)
     conn.close()
     return novo
 
 def addCliente(cliente):
     conn = db.connect_db()
     cursor = conn.cursor()
-    sql = """INSERT INTO Clientes (nome, rgNum, orgaoExp, rgDataEmis, cnhNum, categ, cnhDataEmis, cpf, telefone, nasc, email, endereco, nomeMae)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);"""
+    sql = """INSERT INTO Clientes (nome, rgNum, orgaoExp, rgDataEmis, cnhNum, categ, cnhDataEmis, cpf, telefone, nasc, email, endereco, nomeMae, plano)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);"""
     cursor.execute(sql, [cliente.nome, cliente.rgNum, cliente.orgaoExp, cliente.rgDataEmis, cliente.cnhNum, cliente.categ, cliente.cnhDataEmis,
-            cliente.cpf, cliente.telefone, cliente.nasc, cliente.email, cliente.endereco, cliente.nomeMae,])
+            cliente.cpf, cliente.telefone, cliente.nasc, cliente.email, cliente.endereco, cliente.nomeMae, cliente.plano])
     conn.commit()
     conn.close()
 
 def editCliente(cliente):
     conn = db.connect_db()
     cursor = conn.cursor()
-    sql = ("UPDATE Clientes SET nome=?, rgNum=?, orgaoExp=?, rgDataEmis=?, cnhNum=?, categ=?, cnhDataEmis=?, cpf=?, telefone=?, nasc=?, email=?, endereco=?, nomeMae=? WHERE id=?;")
+    sql = ("UPDATE Clientes SET nome=?, rgNum=?, orgaoExp=?, rgDataEmis=?, cnhNum=?, categ=?, cnhDataEmis=?, cpf=?, telefone=?, nasc=?, email=?, endereco=?, nomeMae=?, plano=? WHERE id=?;")
     cursor.execute(sql, [cliente.nome, cliente.rgNum, cliente.orgaoExp, cliente.rgDataEmis, cliente.cnhNum, cliente.categ, cliente.cnhDataEmis, cliente.cpf, cliente.telefone,
-            cliente.nasc, cliente.email, cliente.endereco, cliente.nomeMae, cliente.id])
+            cliente.nasc, cliente.email, cliente.endereco, cliente.nomeMae, cliente.plano, cliente.id])
     conn.commit()
     conn.close()
 

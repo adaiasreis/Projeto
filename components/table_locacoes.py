@@ -1,4 +1,5 @@
 from PyQt5.QtWidgets import QHeaderView, QTableWidget, QTableWidgetItem
+
 import models.model_locacao as Locacoes
 
 class TableLocacao(QTableWidget):

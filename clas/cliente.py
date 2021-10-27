@@ -1,6 +1,6 @@
 #Classe Clientes
 class Cliente:
-    def __init__(self, id, nome, rgNum, orgaoExp, rgDataEmis, cnhNum, categ, cnhDataEmis, cpf, telefone, nasc, email, endereco, nomeMae):
+    def __init__(self, id, nome, rgNum, orgaoExp, rgDataEmis, cnhNum, categ, cnhDataEmis, cpf, telefone, nasc, email, endereco, nomeMae, plano):
         self.id = id
         self.nome = nome
         self.rgNum = rgNum
@@ -15,3 +15,4 @@ class Cliente:
         self.email = email
         self.endereco = endereco
         self.nomeMae = nomeMae
+        self.plano = plano

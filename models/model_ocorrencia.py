@@ -53,3 +53,18 @@ def delOcor(id):
     cursor.execute(sql, [id])
     conn.commit()
     conn.close()
+
+def getOcorsPlan():
+    conn = db.connect_db()
+    cursor = conn.cursor()
+    cursor.execute ("SELECT * FROM Ocorrencias WHERE tipo='Taxa Especial';")
+    lista_planos = []
+    for p in cursor.fetchall():
+        id = p[0]
+        tipo = p[1]
+        ident = p[2]
+        valor = p[3]
+        nova = Ocorrencia(id,tipo, ident, valor)
+        lista_planos.append(nova)
+    conn.close()
+    return lista_planos

@@ -35,30 +35,30 @@ class CadReserva(QWidget):
         lista_combo = []
         for c in self.lista_clientes:
             lista_combo.append(c.nome)
-        self.comboClienteR.addItems(lista_combo)
+        self.comboCliente.addItems(lista_combo)
 
     def carregaDadosVeiculo(self):
         self.lista_veiculos = Veiculos.getVeiculos()
         lista_combo = []
         for v in self.lista_veiculos:
             lista_combo.append(v.marca)
-        self.comboMarcaR.addItems(lista_combo)
+        self.comboMarca.addItems(lista_combo)
 
     def setEventos(self):
-        self.comboClienteR.currentIndexChanged.connect(self.index_changed_cliente)
-        self.comboMarcaR.currentIndexChanged.connect(self.index_changed_veiculo)
+        self.comboCliente.currentIndexChanged.connect(self.index_changed_cliente)
+        self.comboMarca.currentIndexChanged.connect(self.index_changed_veiculo)
         self.b_reserva.clicked.connect(self.addReserva)
         self.b_limpar.clicked.connect(self.limparCampos)
 
     def index_changed_cliente(self, i):
         self.clienteAtual = self.lista_clientes[i]
         self.campId_cli.setText(str(self.clienteAtual.id))
-        #self.camoPlano.setText(self.clienteAtual.plano)
+        self.campPlano.setText(self.clienteAtual.plano)
 
     def index_changed_veiculo(self, i):
         self.veiculoAtual = self.lista_veiculos[i]
         self.campId_vei.setText(str(self.veiculoAtual.id))
-        self.campModeloR.setText(self.veiculoAtual.modelo)
+        self.campModelo.setText(self.veiculoAtual.modelo)
 
     def addReserva(self):
         novoReserva = self.getReservas()
@@ -69,7 +69,7 @@ class CadReserva(QWidget):
 
     def getReservas(self):
         id_cliente = self.campId_cli.text()
-        cliente = self.comboClienteR.currentText()
+        cliente = self.comboCliente.currentText()
         plano = self.campPlano.text()
         tipo = self.comboTipo.currentText()
         id_veiculo = self.campId_vei.text()
@@ -86,11 +86,11 @@ class CadReserva(QWidget):
     def limparCampos(self):
         self.reservaAtual = None
         self.campId_cli.setText("")
-        self.comboCliente.currentText("")
+        self.comboCliente.setCurrentText("")
         self.campPlano.setText("")
         self.comboTipo.setText("")
         self.campId_vei.setText("")
-        self.comboVeiculo.setText("")
+        self.comboVeiculo.setCUrrentText("")
         self.data_inic.setDateTime("")
         self.dataFim.setDateTime("")
         self.comboStatus.currentText("")

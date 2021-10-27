@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>807</width>
+    <width>900</width>
     <height>291</height>
    </rect>
   </property>
@@ -121,6 +121,16 @@
        <property name="icon">
         <iconset>
          <normaloff>../icons/3592829-calendar-general-month-month-calendar-office-schedule-wall-calendar_107756.png</normaloff>../icons/3592829-calendar-general-month-month-calendar-office-schedule-wall-calendar_107756.png</iconset>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Reserva</string>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
        </property>
       </item>
       <item>
