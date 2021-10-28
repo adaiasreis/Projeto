@@ -28,7 +28,7 @@ class CadLocacao(QWidget):
         lista_combo = []
         for r in self.lista_reservas:
             lista_combo.append(r.id)
-        self.comboId.addItems(lista_combo)
+        self.comboId.addItems(str(lista_combo))
 
     def setEventos(self):
         self.comboId.currentIndexChanged.connect(self.index_changed_reserva)

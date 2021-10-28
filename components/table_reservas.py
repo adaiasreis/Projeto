@@ -45,7 +45,7 @@ class TableReserva(QTableWidget):
         rowCount = self.rowCount()
         self.insertRow(rowCount)
         # fixa a linha e muda a coluna conforme os valores
-        id_id = QTableWidgetItem(reserva.id)
+        id_item = QTableWidgetItem(str(reserva.id))
         id_cliente = QTableWidgetItem(reserva.cliente)
         id_tipo = QTableWidgetItem(reserva.tipo)
         id_veiculo = QTableWidgetItem(reserva.veiculo)
@@ -53,7 +53,7 @@ class TableReserva(QTableWidget):
         id_valorPrev = QTableWidgetItem(reserva.valor_prev)
         id_status = QTableWidgetItem(reserva.status)
         # insere os itens na tabela
-        self.setItem(rowCount, 0, id_id)
+        self.setItem(rowCount, 0, id_item)
         self.setItem(rowCount, 1, id_cliente)
         self.setItem(rowCount, 2, id_tipo)
         self.setItem(rowCount, 3, id_veiculo)

@@ -57,7 +57,7 @@ class CadClientes(QWidget):
         nomeMae = self.campNmae.text()
         plano = self.comboPlanos.currentText()
 
-        if ((nome != "") and (rgNum != "") and (orgaoExp != "") and (rgDataEmis != "") and (cnhNum != "") and (categ != "") and (cnhDataEmis != "") and (cpf != "") and (telefone != "") and (nasc != "") and (email != "") and (endereco != "") and (nomeMae != "") and (plano != "")):
+        if ((nome != "") and (rgNum != "") and (orgaoExp != "") and (rgDataEmis != "") and (cnhNum != "") and (categ != "") and (cnhDataEmis != "") and (cpf != "") and (telefone != "") and (nasc != "") and (email != "") and (endereco != "") and (nomeMae != "") and (plano != "Não Atribuido")):
             return Cliente (-1, self.campNome.text(), self.campRgn.text(), self.campRgo.text(), self.campRgd.text(), self.campChn.text(), self.campChc.text(), self.campChd.text(), self.campCpf.text(), self.campTelefone.text(), self.campNasc.text(), self.campEmail.text(), self.campEndereco.text(), self.campNmae.text(), self.comboPlanos.currentText())
         return None
 

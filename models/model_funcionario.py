@@ -4,7 +4,7 @@ from clas.funcionario import Funcionario
 def getFuncs():
     conn = db.connect_db()
     cursor = conn.cursor()
-    cursor.execute("SELECT * FROM Funcionarios")
+    cursor.execute("SELECT * FROM Funcionarios ORDER BY nome;")
     lista_funcionarios = []
     for f in cursor.fetchall():
         id = f[0]

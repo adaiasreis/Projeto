@@ -4,7 +4,7 @@ from clas.cliente import Cliente
 def getClientes():
     conn = db.connect_db()
     cursor = conn.cursor()
-    cursor.execute("SELECT * FROM Clientes;")
+    cursor.execute("SELECT * FROM Clientes ORDER BY nome;")
     lista_clientes = []
     for c in cursor.fetchall():
         id = c[0]
