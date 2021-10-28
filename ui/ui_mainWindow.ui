@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>900</width>
-    <height>291</height>
+    <height>292</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -19,24 +19,34 @@
   <property name="windowTitle">
    <string>LocCar - Sistema Integrado de Informações</string>
   </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../icons/ExecutiveCar_Black_icon-icons.com_54904.png</normaloff>../icons/ExecutiveCar_Black_icon-icons.com_54904.png</iconset>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
      <widget class="QListWidget" name="listWidget">
       <property name="sizePolicy">
-       <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
         <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
+        <verstretch>10</verstretch>
        </sizepolicy>
       </property>
       <property name="maximumSize">
        <size>
         <width>16777215</width>
-        <height>30</height>
+        <height>70</height>
        </size>
       </property>
       <property name="lineWidth">
        <number>1</number>
+      </property>
+      <property name="sizeAdjustPolicy">
+       <enum>QAbstractScrollArea::AdjustToContents</enum>
+      </property>
+      <property name="verticalScrollMode">
+       <enum>QAbstractItemView::ScrollPerItem</enum>
       </property>
       <property name="flow">
        <enum>QListView::LeftToRight</enum>
@@ -45,13 +55,16 @@
        <enum>QListView::Adjust</enum>
       </property>
       <property name="spacing">
-       <number>7</number>
+       <number>10</number>
       </property>
       <property name="viewMode">
-       <enum>QListView::ListMode</enum>
+       <enum>QListView::IconMode</enum>
       </property>
       <property name="modelColumn">
        <number>0</number>
+      </property>
+      <property name="uniformItemSizes">
+       <bool>false</bool>
       </property>
       <item>
        <property name="text">
@@ -92,7 +105,7 @@
        </property>
        <property name="icon">
         <iconset>
-         <normaloff>../icons/business_application_addmale_useradd_insert_add_user_client_2312.png</normaloff>../icons/business_application_addmale_useradd_insert_add_user_client_2312.png</iconset>
+         <normaloff>../icons/1499345621-contact_85338.png</normaloff>../icons/1499345621-contact_85338.png</iconset>
        </property>
       </item>
       <item>
@@ -132,6 +145,10 @@
          <pointsize>12</pointsize>
         </font>
        </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>../icons/3615746-checklist-clipboard-package-report-restriction-shipment-shipping_107922.png</normaloff>../icons/3615746-checklist-clipboard-package-report-restriction-shipment-shipping_107922.png</iconset>
+       </property>
       </item>
       <item>
        <property name="text">
@@ -144,7 +161,7 @@
        </property>
        <property name="icon">
         <iconset>
-         <normaloff>../icons/travel_car_BMV_1741.png</normaloff>../icons/travel_car_BMV_1741.png</iconset>
+         <normaloff>../icons/pngwing.com.png</normaloff>../icons/pngwing.com.png</iconset>
        </property>
       </item>
       <item>

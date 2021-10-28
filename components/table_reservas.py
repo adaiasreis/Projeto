@@ -4,10 +4,10 @@ import models.model_reservas as Reservas
 
 class TableReserva(QTableWidget):
     def __init__(self, parent):
-        super().__init__(0, 5)
+        super().__init__(0, 7)
         self.parent = parent
 
-        headers = ["CLIENTE","TIPO DA LOCAÇÃO","VEÍCULO","DATA PREVISTA","STATUS"]
+        headers = ["ID","CLIENTE","TIPO DA LOCAÇÃO","VEÍCULO","DATA PREVISTA", "VALOR PREVIO R$","STATUS"]
         self.setHorizontalHeaderLabels(headers)
 
         self.configTable()
@@ -18,11 +18,13 @@ class TableReserva(QTableWidget):
         self.verticalHeader().setVisible(False)
         # ajusta as colunas ao tamanho da tela
         self.horizontalHeader().setStretchLastSection(False)
-        self.horizontalHeader().setSectionResizeMode(0,QHeaderView.Stretch)
-        self.horizontalHeader().setSectionResizeMode(1,QHeaderView.ResizeToContents)
-        self.horizontalHeader().setSectionResizeMode(2,QHeaderView.Stretch)
-        self.horizontalHeader().setSectionResizeMode(3,QHeaderView.ResizeToContents)
+        self.horizontalHeader().setSectionResizeMode(0,QHeaderView.ResizeToContents)
+        self.horizontalHeader().setSectionResizeMode(1,QHeaderView.Stretch)
+        self.horizontalHeader().setSectionResizeMode(2,QHeaderView.ResizeToContents)
+        self.horizontalHeader().setSectionResizeMode(3,QHeaderView.Stretch)
         self.horizontalHeader().setSectionResizeMode(4,QHeaderView.ResizeToContents)
+        self.horizontalHeader().setSectionResizeMode(5,QHeaderView.ResizeToContents)
+        self.horizontalHeader().setSectionResizeMode(6,QHeaderView.ResizeToContents)
         # Alterna as cores das linhas
         self.setAlternatingRowColors(True)
         # desabilita a edição dos campos
@@ -36,23 +38,28 @@ class TableReserva(QTableWidget):
         self.lista_reservas = Reservas.getReservas()
         # necessário marcar a linha como a primeira para sobreescrever os dados da tabela
         self.setRowCount(0)
-        for locacao in self.lista_reservas:
-            self._addRow(locacao)
+        for reserva in self.lista_reservas:
+            self._addRow(reserva)
 
-    def _addRow(self, locacao):
+    def _addRow(self, reserva):
         rowCount = self.rowCount()
         self.insertRow(rowCount)
         # fixa a linha e muda a coluna conforme os valores
-        id_cliente = QTableWidgetItem(locacao.cliente)
-        id_tipo = QTableWidgetItem(locacao.tipo)
-        id_veiculo = QTableWidgetItem(locacao.veiculo)
-        id_dataLoc = QTableWidgetItem(locacao.dataLoc)
-        id_status = QTableWidgetItem(locacao.status)
+        id_id = QTableWidgetItem(reserva.id)
+        id_cliente = QTableWidgetItem(reserva.cliente)
+        id_tipo = QTableWidgetItem(reserva.tipo)
+        id_veiculo = QTableWidgetItem(reserva.veiculo)
+        id_dataLoc = QTableWidgetItem(reserva.dp_saida)
+        id_valorPrev = QTableWidgetItem(reserva.valor_prev)
+        id_status = QTableWidgetItem(reserva.status)
         # insere os itens na tabela
-        self.setItem(rowCount, 0, id_cliente)
-        self.setItem(rowCount, 1, id_veiculo)
-        self.setItem(rowCount, 2, id_dataLoc)
-        self.setItem(rowCount, 3, id_status)
+        self.setItem(rowCount, 0, id_id)
+        self.setItem(rowCount, 1, id_cliente)
+        self.setItem(rowCount, 2, id_tipo)
+        self.setItem(rowCount, 3, id_veiculo)
+        self.setItem(rowCount, 4, id_dataLoc)
+        self.setItem(rowCount, 5, id_valorPrev)
+        self.setItem(rowCount, 6, id_status)
 
     def on_click(self):
         selected_row = self.currentRow()

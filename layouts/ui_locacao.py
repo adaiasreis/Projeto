@@ -21,7 +21,7 @@ class CadLocacao(QWidget):
 
         self.setEventos()
 
-        self.carregaDadosReservas()
+        #self.carregaDadosReservas()
 
     def carregaDadosReservas(self):
         self.lista_reservas = Reservas.getReservas()
@@ -33,7 +33,7 @@ class CadLocacao(QWidget):
     def setEventos(self):
         self.comboId.currentIndexChanged.connect(self.index_changed_reserva)
         self.b_locar.clicked.connect(self.addLocacao)
-        self.b_limpar_2.clicked.connect(self.limparCampos)
+        self.b_limpar.clicked.connect(self.limparCampos)
 
     def index_changed_reserva(self, i):
         self.reservaAtual = self.lista_reservas[i]
@@ -45,6 +45,9 @@ class CadLocacao(QWidget):
         if novoLocacao != None:
             if self.locacaoAtual == None:
                 self.table.add(novoLocacao)
+            else:
+                novoLocacao = self.locacaoAtual
+                self.table.update(novoLocacao)
             self.limparCampos()
 
     def getLocacao(self):
@@ -73,7 +76,7 @@ class CadLocacao(QWidget):
         self.campValorPagar.text("")
 
         self.b_locar.setText("Confirmar")
-        self.b_limpar_2.setEnabled(False)
+        self.b_limpar.setEnabled(False)
 
     def insereLocacao(self, locacao):
         self.locacaoAtual = locacao

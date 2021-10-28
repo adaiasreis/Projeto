@@ -1,6 +1,6 @@
 from datetime import datetime as dt
 from PyQt5.QtWidgets import QMainWindow, QWidget
-from PyQt5.QtCore import QDateTime, QDate, Qt
+from PyQt5.QtCore import QDateTime, QDate, Qt, QTimer, QTime
 from PyQt5 import uic
 
 from layouts.ui_inicio import Inicio
@@ -22,8 +22,9 @@ class MainWindow(QMainWindow):
 
         self.usuarioAtual = usuarioAtual
 
-        now = dt.now()
-        data = now.strftime("%d/%m/%Y %H:%M:%S")
+        timer = QTimer(self) 
+        timer.timeout.connect(self.showTime) 
+        timer.start(1000)
 
         self.carregarJanelas()
 
@@ -31,6 +32,10 @@ class MainWindow(QMainWindow):
 
         self.listWidget.currentRowChanged.connect(self.display)
 
+    def showTime(self):
+        now = dt.now()
+        data = now.strftime("%d/%m/%Y %H:%M:%S")
+        
         self.statusBar.showMessage("Seja bem vindo "+ self.usuarioAtual['nome'] + "  [" + data + "]")
 
     def carregarJanelas(self):

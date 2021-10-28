@@ -107,7 +107,7 @@ p, li { white-space: pre-wrap; }
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap>../icons/Car_Grey_icon-icons.com_54905.png</pixmap>
+            <pixmap>../icons/ExecutiveCar_Black_icon-icons.com_54904.png</pixmap>
            </property>
            <property name="scaledContents">
             <bool>true</bool>

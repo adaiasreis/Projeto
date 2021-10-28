@@ -9,13 +9,16 @@ def getReservas():
     for r in cursor.fetchall():
         id = r[0]
         id_cliente = r[1]
-        plano = r[2]
-        id_tipo = r[3]
-        id_veiculo = r[4]
-        dp_saida = r[5]
-        dp_retorno = r[6]
-        status = r[7]
-        nova = Reserva(id, id_cliente, plano, id_tipo, id_veiculo, dp_saida, dp_retorno, status)
+        cliente = r[2]
+        plano = r[3]
+        tipo = r[4]
+        id_veiculo = r[5]
+        veiculo = r[6]
+        dp_saida = r[7]
+        dp_retorno = r[8]
+        valor_prev = r[9]
+        status = r[10]
+        nova = Reserva(id, id_cliente, cliente, plano, tipo, id_veiculo,veiculo, dp_saida, dp_retorno, valor_prev, status)
         lista_reservas.append(nova)
     conn.close()
     return lista_reservas
@@ -28,32 +31,34 @@ def getReserva(id):
     r = cursor.fetchall()[0]
     id = r[0]
     id_cliente = r[1]
-    plano = r[2]
-    id_tipo = r[3]
-    id_veiculo = r[4]
-    dp_saida = r[5]
-    dp_retorno = r[6]
-    status = r[7]
-    novo = Reserva(id, id_cliente, plano, id_tipo, id_veiculo, dp_saida, dp_retorno, status)
+    cliente = r[2]
+    plano = r[3]
+    tipo = r[4]
+    id_veiculo = r[5]
+    veiculo = r[6]
+    dp_saida = r[7]
+    dp_retorno = r[8]
+    valor_prev = r[9]
+    status = r[10]
+    novo = Reserva(id, id_cliente, cliente, plano, tipo, id_veiculo, veiculo, dp_saida, dp_retorno, valor_prev, status)
     conn.close()
     return novo
 
 def addReserva(reserva):
     conn = db.connect_db()
     cursor = conn.cursor()
-    sql = """INSERT INTO Reservas (id_cliente, plano, id_tipo, id_veiculo, dp_saida, dp_retorno, status)
-            VALUES (?, ?, ?, ?, ?, ?, ?)"""
-    cursor.execute(sql, [reserva.id_cliente, reserva.plano, reserva.id_tipo, reserva.i_veiculo, 
-        reserva.dp_saida, reserva.dp_retorno, reserva.status])
+    sql = """INSERT INTO Reservas (id_cliente, cliente, plano, tipo, id_veiculo, veiculo, dp_saida, dp_retorno, valor_prev, status)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"""
+    cursor.execute(sql, [reserva.id_cliente, reserva.cliente, reserva.plano, reserva.tipo, reserva.id_veiculo, reserva.veiculo, 
+            reserva.dp_saida, reserva.dp_retorno, reserva.valor_prev, reserva.status])
     conn.commit()
     conn.close
 
 def editReserva(reserva):
     conn = db.connect_db()
     cursor = conn.cursor()
-    sql = ("UPDATE Reservas SET id_cliente=?, plano=?, id_tipo=?, id_veiculo=?, dp_saida=? dp_retorno=?, status=? WHERE id=?;")
-    cursor.execute(sql, [reserva.id_cliente, reserva.plano, reserva.id_tipo, reserva.i_veiculo, 
-        reserva.dp_saida, reserva.dp_retorno, reserva.status, reserva.id])
+    sql = ("UPDATE Reservas SET id_cliente=?, cliente=?, plano=?, tipo=?, id_veiculo=?, veiculo=?, dp_saida=? dp_retorno=?, valor_prev=?, status=? WHERE id=?;")
+    cursor.execute(sql, [reserva.id_cliente, reserva.plano, reserva.tipo, reserva.id_veiculo, reserva.dp_saida, reserva.dp_retorno, reserva.valor_prev, reserva.status, reserva.id])
     conn.commit()
     conn.close()
 
