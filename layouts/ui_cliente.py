@@ -76,7 +76,7 @@ class CadClientes(QWidget):
         self.campEmail.setText("")
         self.campEndereco.setText("")
         self.campNmae.setText("")
-        self.comboPlanos.setCurrentText("")
+        self.comboPlanos.setCurrentIndex(0)
 
         self.b_novo.setText("Adicionar")
         self.b_excluir.setEnabled(False)

@@ -1,1 +1,2 @@
-app.exec_()
+
+from layouts.ui_telaLogin import FazerLogin

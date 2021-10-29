@@ -25,6 +25,30 @@ def getVeiculos():
     conn.close()
     return lista_veiculos
 
+def getVeiculosCateg(categ):
+    conn = db.connect_db()
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM Veiculos WHERE categ=?;" ,[categ])
+    lista_veiculos = []
+    for v in cursor.fetchall():
+        id = v[0]
+        marca = v[1]
+        modelo = v[2]
+        cor = v[3]
+        categ = v[4]
+        anoFab = v[5]
+        placa = v[6]
+        chassi = v[7]
+        renavam = v[8]
+        capPassag = v[9]
+        portas = v[10]
+        potencia = v[11]
+        cilindradas = v[12]
+        nova = Veiculo(id, marca, modelo, cor, categ, anoFab, placa, chassi, renavam, capPassag, portas, potencia, cilindradas)
+        lista_veiculos.append(nova)
+    conn.close()
+    return lista_veiculos
+
 def getVeiculo(id):
     conn = db.connect_db()
     cursor = conn.cursor()

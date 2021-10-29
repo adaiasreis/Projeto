@@ -349,6 +349,22 @@ selection-background-color: rgb(255, 0, 0);
             <property name="sizeConstraint">
              <enum>QLayout::SetMinAndMaxSize</enum>
             </property>
+            <item row="0" column="1">
+             <widget class="QDateEdit" name="editData_inic">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+              </property>
+              <property name="calendarPopup">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
             <item row="0" column="0">
              <widget class="QLabel" name="label_3">
               <property name="sizePolicy">
@@ -362,16 +378,29 @@ selection-background-color: rgb(255, 0, 0);
               </property>
              </widget>
             </item>
-            <item row="0" column="1">
-             <widget class="QDateEdit" name="editData_inic">
+            <item row="0" column="4">
+             <spacer name="horizontalSpacer_6">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Minimum</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>50</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item row="0" column="3">
+             <widget class="QDateEdit" name="editData_fim">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
               </property>
               <property name="calendarPopup">
                <bool>true</bool>
@@ -390,35 +419,6 @@ selection-background-color: rgb(255, 0, 0);
                <string>Data Prevista Retorno</string>
               </property>
              </widget>
-            </item>
-            <item row="0" column="3">
-             <widget class="QDateEdit" name="editData_fim">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="calendarPopup">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="4">
-             <spacer name="horizontalSpacer_6">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeType">
-               <enum>QSizePolicy::Minimum</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
             </item>
            </layout>
           </item>
@@ -463,6 +463,9 @@ selection-background-color: rgb(255, 0, 0);
            <weight>75</weight>
            <bold>true</bold>
           </font>
+         </property>
+         <property name="readOnly">
+          <bool>true</bool>
          </property>
         </widget>
        </item>
@@ -520,7 +523,7 @@ selection-background-color: rgb(255, 0, 0);
          </item>
          <item>
           <property name="text">
-           <string>Efetivar Locação</string>
+           <string>Concluido</string>
           </property>
          </item>
         </widget>

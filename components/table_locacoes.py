@@ -4,10 +4,10 @@ import models.model_locacao as Locacoes
 
 class TableLocacao(QTableWidget):
     def __init__(self, parent):
-        super().__init__(0, 6)
+        super().__init__(0, 5)
         self.parent = parent
 
-        headers = ["ID","CLIENTE","VEÍCULO","USO ESTIMADO (KM)", "DATA PREV RETORNO","STATUS"]
+        headers = ["ID","ID RESERVA","USO ESTIMADO (KM)", "VALOR LOCAÇÃO","STATUS"]
         self.setHorizontalHeaderLabels(headers)
 
         self.configTable()
@@ -18,12 +18,11 @@ class TableLocacao(QTableWidget):
         self.verticalHeader().setVisible(False)
         # ajusta as colunas ao tamanho da tela
         self.horizontalHeader().setStretchLastSection(False)
-        self.horizontalHeader().setSectionResizeMode(0,QHeaderView.ResizeToContents)
+        self.horizontalHeader().setSectionResizeMode(0,QHeaderView.Stretch)
         self.horizontalHeader().setSectionResizeMode(1,QHeaderView.Stretch)
         self.horizontalHeader().setSectionResizeMode(2,QHeaderView.Stretch)
-        self.horizontalHeader().setSectionResizeMode(3,QHeaderView.ResizeToContents)
-        self.horizontalHeader().setSectionResizeMode(4,QHeaderView.ResizeToContents)
-        self.horizontalHeader().setSectionResizeMode(5,QHeaderView.ResizeToContents)
+        self.horizontalHeader().setSectionResizeMode(3,QHeaderView.Stretch)
+        self.horizontalHeader().setSectionResizeMode(4,QHeaderView.Stretch)
         # Alterna as cores das linhas
         self.setAlternatingRowColors(True)
         # desabilita a edição dos campos
@@ -44,19 +43,17 @@ class TableLocacao(QTableWidget):
         rowCount = self.rowCount()
         self.insertRow(rowCount)
         # fixa a linha e muda a coluna conforme os valores
-        id_id = QTableWidgetItem(locacao.id)
-        id_cliente = QTableWidgetItem(locacao.cliente)
-        id_tipo = QTableWidgetItem(locacao.tipo)
-        id_veiculo = QTableWidgetItem(locacao.veiculo)
-        id_dataLoc = QTableWidgetItem(locacao.dataLoc)
+        id_id = QTableWidgetItem(str(locacao.id))
+        id_id_res = QTableWidgetItem(str(locacao.id_res))
+        id_kmEstim = QTableWidgetItem(str(locacao.kmEstim))
+        id_valorLoc = QTableWidgetItem(str(locacao.valorLoc))
         id_status = QTableWidgetItem(locacao.status)
         # insere os itens na tabela
         self.setItem(rowCount, 0, id_id)
-        self.setItem(rowCount, 1, id_cliente)
-        self.setItem(rowCount, 2, id_tipo)
-        self.setItem(rowCount, 3, id_veiculo)
-        self.setItem(rowCount, 4, id_dataLoc)
-        self.setItem(rowCount, 5, id_status)
+        self.setItem(rowCount, 1, id_id_res)
+        self.setItem(rowCount, 2, id_kmEstim)
+        self.setItem(rowCount, 3, id_valorLoc)
+        self.setItem(rowCount, 4, id_status)
 
     def on_click(self):
         selected_row = self.currentRow()

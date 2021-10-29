@@ -1,4 +1,7 @@
 from PyQt5.QtWidgets import QHeaderView, QTableWidget, QTableWidgetItem
+from PyQt5.QtWidgets import QHeaderView, QTableWidget, QTableWidgetItem, QPushButton, QHBoxLayout, QWidget
+from PyQt5.QtGui import QIcon
+from layouts.ui_locacao import CadLocacao
 
 import models.model_reservas as Reservas
 
@@ -50,7 +53,7 @@ class TableReserva(QTableWidget):
         id_tipo = QTableWidgetItem(reserva.tipo)
         id_veiculo = QTableWidgetItem(reserva.veiculo)
         id_dataLoc = QTableWidgetItem(reserva.dp_saida)
-        id_valorPrev = QTableWidgetItem(reserva.valor_prev)
+        id_valorPrev = QTableWidgetItem(str(reserva.valor_prev))
         id_status = QTableWidgetItem(reserva.status)
         # insere os itens na tabela
         self.setItem(rowCount, 0, id_item)
@@ -82,3 +85,27 @@ class TableReserva(QTableWidget):
         Reservas.delReserva(reserva.id)
         # Carrega os dados do banco
         self.carregaDados()
+
+class IconHistoricot(QWidget):
+    def __init__(self, reserva):
+        super(IconHistoricot, self).__init__()
+        self.reserva = reserva
+        self.btn = QPushButton(self)
+        self.btn.setText("")  # text
+        self.btn.setIcon(QIcon("icons/icon_locacao..png"))  # icon
+        self.btn.clicked.connect(self.cadLocacao())
+        self.btn.setToolTip(
+            "Histórico de compras do cliente.")  # Tool tip
+        # remove a cor de fundo do botão e a borda
+        self.btn.setStyleSheet(
+            'QPushButton {background-color: #00FFFFFF; border:  none}')
+        self.btn.setIconSize(QSize(20, 20))
+
+        layout = QHBoxLayout()
+        layout.setContentsMargins(0, 0, 0, 10)
+        layout.addWidget(self.btn)
+        self.setLayout(layout)
+
+    def abrirHistorico(self):
+        self.hreserva = CadLocacao(self.reserva)
+        self.hreserva.show()

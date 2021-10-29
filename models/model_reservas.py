@@ -57,8 +57,8 @@ def addReserva(reserva):
 def editReserva(reserva):
     conn = db.connect_db()
     cursor = conn.cursor()
-    sql = ("UPDATE Reservas SET id_cliente=?, cliente=?, plano=?, tipo=?, id_veiculo=?, veiculo=?, dp_saida=? dp_retorno=?, valor_prev=?, status=? WHERE id=?;")
-    cursor.execute(sql, [reserva.id_cliente, reserva.plano, reserva.tipo, reserva.id_veiculo, reserva.dp_saida, reserva.dp_retorno, reserva.valor_prev, reserva.status, reserva.id])
+    sql = ("UPDATE Reservas SET id_cliente=?, cliente=?, plano=?, tipo=?, id_veiculo=?, veiculo=?, dp_saida=?, dp_retorno=?, valor_prev=?, status=? WHERE id=?;")
+    cursor.execute(sql, [reserva.id_cliente, reserva.cliente, reserva.plano, reserva.tipo, reserva.id_veiculo, reserva.veiculo, reserva.dp_saida, reserva.dp_retorno, reserva.valor_prev, reserva.status, reserva.id])
     conn.commit()
     conn.close()
 

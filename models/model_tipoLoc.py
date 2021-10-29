@@ -36,7 +36,7 @@ def addTipo(tipo):
     conn = db.connect_db()
     cursor = conn.cursor()
     sql = """INSERT INTO Tipos (ident, v_diaria, v_kmEst, v_kmExced)
-            VALUES (?,?,?,?)"""
+            VALUES (?,?,?,?);"""
     cursor.execute(sql, [tipo.ident, tipo.v_diaria, tipo.v_kmEst, tipo.v_kmExced])
     conn.commit()
     conn.close()
