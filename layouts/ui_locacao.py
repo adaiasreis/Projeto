@@ -14,16 +14,16 @@ class CadLocacao(QWidget):
         self.table = TableLocacao(self)
         self.verticalLayout_2.addWidget(self.table)
 
+        self.locacaoAtual = None
+        self.reservaAtual = None
+        self.lista_reservas = []
+        self.lista_veiculos = []
+
         #self.setEventosCheckBox()
 
         self.carregaDadosReservas()
 
         self.setEventos()
-
-        self.locacaoAtual = None
-        self.reservaAtual = None
-        self.lista_reservas = []
-        self.lista_veiculos = []
 
     def setEventos(self):
         self.comboId.currentIndexChanged.connect(self.index_changed_reserva)

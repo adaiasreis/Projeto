@@ -31,6 +31,10 @@
   <property name="windowTitle">
    <string>Tela de Login</string>
   </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../icons/issueclosed_106527.png</normaloff>../icons/issueclosed_106527.png</iconset>
+  </property>
   <property name="layoutDirection">
    <enum>Qt::LeftToRight</enum>
   </property>
