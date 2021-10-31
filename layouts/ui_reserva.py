@@ -26,6 +26,7 @@ class CadReserva(QWidget):
         self.lista_veiculos = []
         self.lista_tipos = []
         self.lista_reservas = []
+        self.tipo = ""
 
         self.editData_inic.setDate(QDate.currentDate())
         self.editData_fim.setDate(QDate.currentDate())
@@ -64,6 +65,7 @@ class CadReserva(QWidget):
         self.b_reserva.clicked.connect(self.addReserva)
         self.b_limpar.clicked.connect(self.limparCampos)
         self.b_tipos.clicked.connect(self.tiposLoc)
+        self.b_ok.clicked.connect(self.calculaDiferencaDias)
 
     def index_changed_cliente(self, i):
         self.clienteAtual = self.lista_clientes[i]
@@ -76,6 +78,7 @@ class CadReserva(QWidget):
         self.campModelo.setText(self.veiculoAtual.modelo)
 
     def index_changed_tipos(self, i):
+        global tipo
         if (i == 0):
             self.carregaDadosVeiculo("Hatch")
         elif(i == 1):
@@ -83,8 +86,7 @@ class CadReserva(QWidget):
         else:
             self.carregaDadosVeiculo("SUV")
         tipo = self.lista_tipos[i]
-        self.campValorP.setText("%.2f" % tipo.v_diaria)
-        self.calculaDiferencaDias()
+        #self.campValorP.setText("%.2f" % tipo.v_diaria)
 
     def tiposLoc(self, winTipos):
         self.abrirTipos = CadTipos(self)
@@ -109,12 +111,13 @@ class CadReserva(QWidget):
         veiculo = self.comboVeiculos.currentText()
         data_inic = self.editData_inic.date().toString('dd/MM/yyyy')
         data_fim = self.editData_fim.date().toString('dd/MM/yyyy')
+        diarias = self.campDiarias.text()
         valor_prev = self.campValorP.text()
         status = self.comboStatus.currentText()
 
-        if ((id_cliente != "") and (cliente != "") and (plano != "") and (tipo != "") and (id_veiculo != "") and (veiculo != "") and (data_inic != "") and (data_fim != "") and(valor_prev != "") and (status != "")):
+        if ((id_cliente != "") and (cliente != "") and (plano != "") and (tipo != "") and (id_veiculo != "") and (veiculo != "") and (data_inic != "") and (data_fim != "") and(diarias != "") and(valor_prev != "") and (status != "")):
             return Reserva (-1, self.campId_cli.text(), self.comboCliente.currentText(), self.campPlano.text(), self.comboTipos.currentText(), self.campId_vei.text(), self.comboVeiculos.currentText(), self.editData_inic.dateTime().toString('dd/MM/yyyy'),
-                    self.editData_fim.dateTime().toString('dd/MM/yyyy'), self.campValorP.text(), self.comboStatus.currentText())
+                    self.editData_fim.dateTime().toString('dd/MM/yyyy'), self.campDiarias.text(), self.campValorP.text(), self.comboStatus.currentText())
         return None
 
     def limparCampos(self):
@@ -127,6 +130,7 @@ class CadReserva(QWidget):
         self.comboVeiculos.setCurrentText("")
         self.editData_inic.setDate(QDate.currentDate())
         self.editData_fim.setDate(QDate.currentDate())
+        self.campDiarias.setText("")
         self.campValorP.setText("")
         self.comboStatus.setCurrentIndex(0)
 
@@ -144,6 +148,7 @@ class CadReserva(QWidget):
         data_saida = QDate.fromString(reserva.dp_saida, 'dd/MM/yyyy')
         self.editData_inic.setDate(data_saida)
         data_retorno = QDate.fromString(reserva.dp_retorno, 'dd/MM/yyyy')
+        self.campDiarias.setText(str(reserva.diarias))
         self.editData_fim.setDate(data_retorno)
         self.campValorP.setText(str(reserva.valor_prev))
         self.comboStatus.setCurrentText(reserva.status)
@@ -152,28 +157,22 @@ class CadReserva(QWidget):
         self.b_limpar.setEnabled(True)
 
     def calculaDiferencaDias(self):
-        data_i = datetime.strptime(self.editData_inic.date().toString('dd/MM/yyyy'), '%d/%m/%Y')
-        data_f = datetime.strptime(self.editData_inic.date().toString('dd/MM/yyyy'), '%d/%m/%Y')
+        data1 = self.editData_inic.date().toString('dd/MM/yyyy')
+        data2 = self.editData_fim.date().toString('dd/MM/yyyy')
+        data_i = datetime.strptime(data1, '%d/%m/%Y')
+        data_f = datetime.strptime(data2, '%d/%m/%Y')
         qtd_dias = abs((data_f - data_i).days)
-        print(qtd_dias)
-        #self.calculaValorP(self, qtd_dias)
+        self.campDiarias.setText(str(qtd_dias))
+        self.calculaValorDiarias(qtd_dias)
 
+    def calculaValorDiarias(self, q):
+        global tipo
+        val_ds = 0.0
+        val_d = tipo.v_diaria
+        if val_d == "":
+            val_d == 0.0
+        else:
+            val_d == float(val_d)
 
-    """def calculaValorP(self, i, dias):
-        if i == 0:
-            val_d = i.v_kmEst
-            calc = float(val_d) * dias
-            val_p = calc + val_d
-            print(val_d)
-        self.campValorP.setText("%.2f" % val_p)
-        if i == 1:
-            val_d = i.v_kmEst
-            calc = float(val_d) * dias
-            val_p = calc + val_d
-            print(val_d)
-        self.campValorP.setText("%.2f" % val_p)
-        if i == 2:
-            val_d = i.v_kmEst
-            calc = float(val_d) * dias
-            val_p = calc + val_d
-            print(val_d)"""
+            val_ds = float(val_d) * float(q)
+        self.campValorP.setText(str("%.2f" % val_ds))

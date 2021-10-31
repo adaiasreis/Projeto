@@ -55,7 +55,7 @@ class CadLocacao(QWidget):
             if self.locacaoAtual == None:
                 self.table.add(novoLocacao)
             else:
-                novoLocacao = self.locacaoAtual.id
+                novoLocacao.id = self.locacaoAtual.id
                 self.table.update(novoLocacao)
             self.limparCampos()
 
@@ -84,6 +84,8 @@ class CadLocacao(QWidget):
 
         self.b_locar.setText("Confirmar")
         self.b_limpar.setEnabled(False)
+        self.comboId.setEnabled(True)
+
 
     def insereLocacao(self, locacao):
         self.locacaoAtual = locacao
@@ -97,6 +99,7 @@ class CadLocacao(QWidget):
 
         self.b_locar.setText("Atualizar")
         self.b_limpar.setEnabled(True)
+        self.comboId.setEnabled(False)
 
     def checkBoxSeg(self):
         items = 0

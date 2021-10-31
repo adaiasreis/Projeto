@@ -1,4 +1,3 @@
-from PyQt5.QtWidgets import QHeaderView, QTableWidget, QTableWidgetItem
 from PyQt5.QtWidgets import QHeaderView, QTableWidget, QTableWidgetItem, QPushButton, QHBoxLayout, QWidget
 from PyQt5.QtGui import QIcon
 from layouts.ui_locacao import CadLocacao
@@ -7,10 +6,10 @@ import models.model_reservas as Reservas
 
 class TableReserva(QTableWidget):
     def __init__(self, parent):
-        super().__init__(0, 7)
+        super().__init__(0, 8)
         self.parent = parent
 
-        headers = ["ID","CLIENTE","TIPO DA LOCAÇÃO","VEÍCULO","DATA PREVISTA", "VALOR PREVIO R$","STATUS"]
+        headers = ["ID","CLIENTE","TIPO DA LOCAÇÃO","VEÍCULO","DATA PREVISTA","DIARIAS" ,"VALOR PREVIO R$","STATUS"]
         self.setHorizontalHeaderLabels(headers)
 
         self.configTable()
@@ -28,6 +27,7 @@ class TableReserva(QTableWidget):
         self.horizontalHeader().setSectionResizeMode(4,QHeaderView.ResizeToContents)
         self.horizontalHeader().setSectionResizeMode(5,QHeaderView.ResizeToContents)
         self.horizontalHeader().setSectionResizeMode(6,QHeaderView.ResizeToContents)
+        self.horizontalHeader().setSectionResizeMode(7,QHeaderView.ResizeToContents)
         # Alterna as cores das linhas
         self.setAlternatingRowColors(True)
         # desabilita a edição dos campos
@@ -53,6 +53,7 @@ class TableReserva(QTableWidget):
         id_tipo = QTableWidgetItem(reserva.tipo)
         id_veiculo = QTableWidgetItem(reserva.veiculo)
         id_dataLoc = QTableWidgetItem(reserva.dp_saida)
+        id_diarias = QTableWidgetItem(str(reserva.diarias))
         id_valorPrev = QTableWidgetItem(str(reserva.valor_prev))
         id_status = QTableWidgetItem(reserva.status)
         # insere os itens na tabela
@@ -61,8 +62,9 @@ class TableReserva(QTableWidget):
         self.setItem(rowCount, 2, id_tipo)
         self.setItem(rowCount, 3, id_veiculo)
         self.setItem(rowCount, 4, id_dataLoc)
-        self.setItem(rowCount, 5, id_valorPrev)
-        self.setItem(rowCount, 6, id_status)
+        self.setItem(rowCount, 5, id_diarias)
+        self.setItem(rowCount, 6, id_valorPrev)
+        self.setItem(rowCount, 7, id_status)
 
     def on_click(self):
         selected_row = self.currentRow()

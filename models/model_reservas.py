@@ -16,9 +16,10 @@ def getReservas():
         veiculo = r[6]
         dp_saida = r[7]
         dp_retorno = r[8]
-        valor_prev = r[9]
-        status = r[10]
-        nova = Reserva(id, id_cliente, cliente, plano, tipo, id_veiculo,veiculo, dp_saida, dp_retorno, valor_prev, status)
+        diarias = r[9]
+        valor_prev = r[10]
+        status = r[11]
+        nova = Reserva(id, id_cliente, cliente, plano, tipo, id_veiculo,veiculo, dp_saida, dp_retorno, diarias, valor_prev, status)
         lista_reservas.append(nova)
     conn.close()
     return lista_reservas
@@ -38,27 +39,28 @@ def getReserva(id):
     veiculo = r[6]
     dp_saida = r[7]
     dp_retorno = r[8]
-    valor_prev = r[9]
-    status = r[10]
-    novo = Reserva(id, id_cliente, cliente, plano, tipo, id_veiculo, veiculo, dp_saida, dp_retorno, valor_prev, status)
+    diarias = r[9]
+    valor_prev = r[10]
+    status = r[11]
+    novo = Reserva(id, id_cliente, cliente, plano, tipo, id_veiculo, veiculo, dp_saida, dp_retorno, diarias, valor_prev, status)
     conn.close()
     return novo
 
 def addReserva(reserva):
     conn = db.connect_db()
     cursor = conn.cursor()
-    sql = """INSERT INTO Reservas (id_cliente, cliente, plano, tipo, id_veiculo, veiculo, dp_saida, dp_retorno, valor_prev, status)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"""
+    sql = """INSERT INTO Reservas (id_cliente, cliente, plano, tipo, id_veiculo, veiculo, dp_saida, dp_retorno, diarias, valor_prev, status)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)"""
     cursor.execute(sql, [reserva.id_cliente, reserva.cliente, reserva.plano, reserva.tipo, reserva.id_veiculo, reserva.veiculo, 
-            reserva.dp_saida, reserva.dp_retorno, reserva.valor_prev, reserva.status])
+            reserva.dp_saida, reserva.dp_retorno, reserva.diarias, reserva.valor_prev, reserva.status])
     conn.commit()
     conn.close
 
 def editReserva(reserva):
     conn = db.connect_db()
     cursor = conn.cursor()
-    sql = ("UPDATE Reservas SET id_cliente=?, cliente=?, plano=?, tipo=?, id_veiculo=?, veiculo=?, dp_saida=?, dp_retorno=?, valor_prev=?, status=? WHERE id=?;")
-    cursor.execute(sql, [reserva.id_cliente, reserva.cliente, reserva.plano, reserva.tipo, reserva.id_veiculo, reserva.veiculo, reserva.dp_saida, reserva.dp_retorno, reserva.valor_prev, reserva.status, reserva.id])
+    sql = ("UPDATE Reservas SET id_cliente=?, cliente=?, plano=?, tipo=?, id_veiculo=?, veiculo=?, dp_saida=?, dp_retorno=?, diarias=?, valor_prev=?, status=? WHERE id=?;")
+    cursor.execute(sql, [reserva.id_cliente, reserva.cliente, reserva.plano, reserva.tipo, reserva.id_veiculo, reserva.veiculo, reserva.dp_saida, reserva.dp_retorno, reserva. diarias, reserva.valor_prev, reserva.status, reserva.id])
     conn.commit()
     conn.close()
 

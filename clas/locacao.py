@@ -1,6 +1,6 @@
 #Classe locação
 class Reserva:
-    def __init__ (self, id,id_cliente, cliente, plano, tipo, id_veiculo, veiculo, dp_saida, dp_retorno, valor_prev, status):
+    def __init__ (self, id,id_cliente, cliente, plano, tipo, id_veiculo, veiculo, dp_saida, dp_retorno, diarias, valor_prev, status):
         self.id = id
         self.id_cliente = id_cliente
         self.cliente = cliente
@@ -10,6 +10,7 @@ class Reserva:
         self.veiculo = veiculo
         self.dp_saida = dp_saida
         self.dp_retorno = dp_retorno
+        self.diarias = diarias
         self.valor_prev = valor_prev
         self.status = status
 
