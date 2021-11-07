@@ -2,22 +2,37 @@
 <ui version="4.0">
  <class>p_cadastroServico</class>
  <widget class="QWidget" name="p_cadastroServico">
+  <property name="windowModality">
+   <enum>Qt::ApplicationModal</enum>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>548</width>
-    <height>432</height>
+    <width>550</width>
+    <height>470</height>
    </rect>
   </property>
   <property name="sizePolicy">
-   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>550</width>
+    <height>470</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>550</width>
+    <height>470</height>
+   </size>
+  </property>
   <property name="windowTitle">
-   <string>Cadastro de Ocorrências</string>
+   <string>Serviços</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>
@@ -43,7 +58,7 @@
           </font>
          </property>
          <property name="text">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Cadastro de Ocorrências&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Serviços&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
         </widget>
        </item>
@@ -63,16 +78,6 @@
           <string/>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_5">
-          <item>
-           <widget class="QLabel" name="label_3">
-            <property name="text">
-             <string>Tipo de Ocorrência</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QComboBox" name="comboTipo"/>
-          </item>
           <item>
            <layout class="QGridLayout" name="gridLayout_3">
             <item row="2" column="1">
@@ -167,7 +172,6 @@
   </layout>
  </widget>
  <tabstops>
-  <tabstop>comboTipo</tabstop>
   <tabstop>campIdent</tabstop>
   <tabstop>campValor</tabstop>
   <tabstop>b_novo</tabstop>

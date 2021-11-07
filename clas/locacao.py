@@ -15,14 +15,11 @@ class Reserva:
         self.status = status
 
 class Locacao:
-    def __init__(self, id, id_res, kmAtual, kmEstim, seguro, servicos, valorLoc, status):
+    def __init__(self, id, id_res, kmAtual, kmEstim, status):
         self.id = id
         self.id_res = id_res
         self.kmAtual = kmAtual
         self.kmEstim = kmEstim
-        self.seguro = seguro
-        self.servicos = servicos
-        self.valorLoc = valorLoc
         self.status = status
 
 class Checkout:

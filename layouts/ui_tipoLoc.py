@@ -5,11 +5,11 @@ from clas.locacao import Tipo
 from components.table_tiposLoc import TableTipo
 
 class CadTipos(QWidget):
-    def __init__(self, winReserva):
+    def __init__(self, winOcorrencia):
         super().__init__()
         uic.loadUi("ui/ui_tipoLoc.ui", self)
 
-        self.winReserva = winReserva
+        self.winOcorrencia = winOcorrencia
 
         self.table = TableTipo(self)
         self.verticalLayout.addWidget(self.table)

@@ -3,7 +3,7 @@ from PyQt5 import uic
 
 from components.table_clientes import TableWidget
 from clas.cliente import Cliente
-import models.model_ocorrencia as Ocorrencias 
+import models.model_plano as Planos 
 
 class CadClientes(QWidget):
     def __init__(self):
@@ -25,7 +25,7 @@ class CadClientes(QWidget):
         self.b_excluir.clicked.connect(self.excluirItem)
 
     def carregaDadosPlanos(self):
-        self.lista_planos = Ocorrencias.getOcorsPlan()
+        self.lista_planos = Planos.getPlanos()
         lista_combo = []
         for o in self.lista_planos:
             lista_combo.append(o.ident)

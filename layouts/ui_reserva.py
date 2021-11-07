@@ -4,8 +4,8 @@ from PyQt5 import uic
 from datetime import datetime
 
 from components.table_reservas import TableReserva
+from layouts.ui_locacao import CadLocacao
 from clas.locacao import Reserva
-from layouts.ui_tipoLoc import CadTipos
 
 import models.model_cliente as Clientes
 import models.model_veiculo as Veiculos
@@ -62,9 +62,10 @@ class CadReserva(QWidget):
         self.comboCliente.currentIndexChanged.connect(self.index_changed_cliente)
         self.comboVeiculos.currentIndexChanged.connect(self.index_changed_veiculo)
         self.comboTipos.currentIndexChanged.connect(self.index_changed_tipos)
+        #self.comboStatus.currentIndexChanged.connect(self.index_changed_status)
         self.b_reserva.clicked.connect(self.addReserva)
         self.b_limpar.clicked.connect(self.limparCampos)
-        self.b_tipos.clicked.connect(self.tiposLoc)
+        self.b_locar.clicked.connect(self.abrirLocacao)
         self.b_ok.clicked.connect(self.calculaDiferencaDias)
 
     def index_changed_cliente(self, i):
@@ -86,11 +87,7 @@ class CadReserva(QWidget):
         else:
             self.carregaDadosVeiculo("SUV")
         tipo = self.lista_tipos[i]
-        #self.campValorP.setText("%.2f" % tipo.v_diaria)
-
-    def tiposLoc(self, winTipos):
-        self.abrirTipos = CadTipos(self)
-        self.abrirTipos.show()
+        self.campValorP.setText("%.2f" %tipo.v_diaria)
 
     def addReserva(self):
         novoReserva = self.getReservas()
@@ -136,6 +133,8 @@ class CadReserva(QWidget):
 
         self.b_reserva.setText("Reservar")
         self.b_limpar.setEnabled(False)
+        self.b_excluir.setEnabled(False)
+        self.b_locar.setEnabled(False)
 
     def insereReserva(self, reserva):
         self.reservaAtual = reserva
@@ -150,11 +149,13 @@ class CadReserva(QWidget):
         data_retorno = QDate.fromString(reserva.dp_retorno, 'dd/MM/yyyy')
         self.campDiarias.setText(str(reserva.diarias))
         self.editData_fim.setDate(data_retorno)
-        self.campValorP.setText(str(reserva.valor_prev))
+        self.campValorP.setText(str("%.2f" % reserva.valor_prev))
         self.comboStatus.setCurrentText(reserva.status)
 
         self.b_reserva.setText("Atualizar")
         self.b_limpar.setEnabled(True)
+        self.b_excluir.setEnabled(True)
+        self.b_locar.setEnabled(True)
 
     def calculaDiferencaDias(self):
         data1 = self.editData_inic.date().toString('dd/MM/yyyy')
@@ -176,3 +177,7 @@ class CadReserva(QWidget):
 
             val_ds = float(val_d) * float(q)
         self.campValorP.setText(str("%.2f" % val_ds))
+
+    def abrirLocacao(self):
+        self.hreserva = CadLocacao(self.reservaAtual, self)
+        self.hreserva.show()

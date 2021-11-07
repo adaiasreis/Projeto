@@ -1,70 +1,36 @@
 from PyQt5.QtWidgets import QWidget
 from PyQt5 import uic
 
-from components.table_ocorrencias import TableWidget
-from clas.ocorrencia import Ocorrencia
+from layouts.ui_servico import CadServicos
+from layouts.ui_seguro import CadSeguros
+from layouts.ui_plano import CadPlanos
+from layouts.ui_tipoLoc import CadTipos
 
-class CadOcorrencias(QWidget):
+class Ocorrencias(QWidget):
     def __init__(self):
         super(). __init__()
-        uic.loadUi("ui/ui_servicos.ui", self)
+        uic.loadUi("ui/ui_ocorrencia.ui", self)
 
-        self.table = TableWidget(self)
-        self.verticalLayout.addWidget(self.table)
-
-        self.index_changed_tipos()
-        
         self.setEventos()
 
-        self.ocorrenciaAtual = None
-
     def setEventos(self):
-        self.b_novo.clicked.connect(self.addOcor)
-        self.b_limpar.clicked.connect(self.limparCampos)
-        self.b_excluir.clicked.connect(self.excluirItem)
+        self.b_servicos.clicked.connect(self.cadServicos)
+        self.b_seguros.clicked.connect(self.cadSeguros)
+        self.b_planos.clicked.connect(self.cadPlanos)
+        self.b_tipos.clicked.connect(self.tiposLoc)
 
-    def index_changed_tipos(self):
-        self.comboTipo.addItems(["Selecione...", "Seguro", "Serviço", "Taxa Especial"])
+    def cadServicos(self, winServicos):
+        self.abrirServicos = CadServicos(self)
+        self.abrirServicos.show()
 
-    def addOcor(self):
-        novoOcorrencia = self.getOcor()
-        if novoOcorrencia != None:
-            if self.ocorrenciaAtual == None:
-                self.table.add(novoOcorrencia)
-            else:
-                novoOcorrencia.id = self.ocorrenciaAtual.id
-                self.table.update(novoOcorrencia)
-            self.limparCampos()
+    def cadSeguros(self, winSeguros):
+        self.abrirSeguros = CadSeguros(self)
+        self.abrirSeguros.show()
 
-    def getOcor(self):
-        tipo = self.comboTipo.currentText()
-        indet = self.campIdent.text()
-        valor = self.campValor.text()
+    def cadPlanos(self, winPlanos):
+        self.abrirPlanos = CadPlanos(self)
+        self.abrirPlanos.show()
 
-        if ((tipo != "Selecione...") and (indet != "") and (valor != "")):
-            return Ocorrencia (-1, self.comboTipo.currentText(), self.campIdent.text(), self.campValor.text())
-        return None
-
-    def limparCampos(self):
-        self.ocorrenciaAtual = None
-        self.comboTipo.setCurrentIndex(0)
-        self.campIdent.setText("")
-        self.campValor.setText("")
-
-        self.b_novo.setText("Adicionar")
-        self.b_excluir.setEnabled(False)
-        self.b_limpar.setEnabled(False)
-
-    def insereOcor(self, ocorrencia):
-        self.ocorrenciaAtual = ocorrencia
-        self.comboTipo.setCurrentText(ocorrencia.tipo)
-        self.campIdent.setText(ocorrencia.ident)
-        self.campValor.setText(str(ocorrencia.valor))
-
-        self.b_novo.setText("Atualizar")
-        self.b_excluir.setEnabled(True)
-        self.b_limpar.setEnabled(True)
-
-    def excluirItem(self):
-        self.table.delete(self.ocorrenciaAtual)
-        self.limparCampos()
+    def tiposLoc(self, winTipos):
+        self.abrirTipos = CadTipos(self)
+        self.abrirTipos.show()

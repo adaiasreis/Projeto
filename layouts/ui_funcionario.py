@@ -90,7 +90,7 @@ class CadFuncionarios(QWidget):
         self.campEndereco.setText(funcionario.endereco)
         self.campNmae.setText(funcionario.nomeMae)
         self.campCargo.setText(funcionario.cargo)
-        self.campSalario.setText(str(funcionario.salario))
+        self.campSalario.setText(str("%.2f" %funcionario.salario))
         self.campCarga.setText(str(funcionario.cargahs))
         self.campUsuario.setText(funcionario.usuario)
         self.campSenha.setText(str(funcionario.senha))

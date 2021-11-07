@@ -10,7 +10,7 @@
     <x>0</x>
     <y>0</y>
     <width>732</width>
-    <height>383</height>
+    <height>402</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -38,43 +38,6 @@
          </property>
          <property name="text">
           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Reserva de Veículo&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <layout class="QGridLayout" name="gridLayout_7">
-       <item row="0" column="0">
-        <spacer name="horizontalSpacer_4">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="0" column="1">
-        <widget class="QPushButton" name="b_tipos">
-         <property name="styleSheet">
-          <string notr="true">border-style: ridge;
-alternate-background-color: rgb(255, 43, 15);
-color: rgb(0, 0, 255);
-background-color: rgb(170, 255, 255);
-selection-color: rgb(0, 85, 255);
-border-width: 4px;
-border-radius: 18px;
-padding: 8px;
-border-color: rgb(0, 0, 255);
-selection-background-color: rgb(255, 0, 0);
-</string>
-         </property>
-         <property name="text">
-          <string>Tipos de Locações</string>
          </property>
         </widget>
        </item>
@@ -558,6 +521,11 @@ selection-background-color: rgb(255, 0, 0);
          </item>
          <item>
           <property name="text">
+           <string>Locando</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
            <string>Concluido</string>
           </property>
          </item>
@@ -567,7 +535,7 @@ selection-background-color: rgb(255, 0, 0);
      </item>
      <item>
       <layout class="QGridLayout" name="gridLayout_11">
-       <item row="0" column="1">
+       <item row="0" column="2">
         <layout class="QHBoxLayout" name="horizontalLayout">
          <property name="sizeConstraint">
           <enum>QLayout::SetFixedSize</enum>
@@ -583,20 +551,14 @@ selection-background-color: rgb(255, 0, 0);
           </widget>
          </item>
          <item>
-          <spacer name="horizontalSpacer">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
+          <widget class="QPushButton" name="b_locar">
+           <property name="enabled">
+            <bool>false</bool>
            </property>
-           <property name="sizeType">
-            <enum>QSizePolicy::Fixed</enum>
+           <property name="text">
+            <string>Locação</string>
            </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>20</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
+          </widget>
          </item>
          <item>
           <widget class="QPushButton" name="b_reserva">
@@ -607,7 +569,7 @@ selection-background-color: rgb(255, 0, 0);
          </item>
         </layout>
        </item>
-       <item row="0" column="0">
+       <item row="0" column="1">
         <spacer name="horizontalSpacer_2">
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
@@ -619,6 +581,16 @@ selection-background-color: rgb(255, 0, 0);
           </size>
          </property>
         </spacer>
+       </item>
+       <item row="0" column="0">
+        <widget class="QPushButton" name="b_excluir">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Exluir</string>
+         </property>
+        </widget>
        </item>
       </layout>
      </item>

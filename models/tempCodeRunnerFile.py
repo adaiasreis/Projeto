@@ -1,1 +1,0 @@
-DELETE FROM Clientes WHERE id=?;

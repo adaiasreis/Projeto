@@ -1,13 +1,12 @@
 from PyQt5.QtWidgets import QHeaderView, QTableWidget, QTableWidgetItem
+import models.model_seguro as Seguros
 
-import models.model_locacao as Locacoes
-
-class TableLocacao(QTableWidget):
+class TableWidget(QTableWidget):
     def __init__(self, parent):
-        super().__init__(0, 5)
+        super().__init__(0, 3)
         self.parent = parent
 
-        headers = ["ID","ID RESERVA","USO ESTIMADO (KM)", "VALOR LOCAÇÃO","STATUS"]
+        headers = ["ID","IDENTIFICAÇÃO","VALOR"]
         self.setHorizontalHeaderLabels(headers)
 
         self.configTable()
@@ -21,8 +20,6 @@ class TableLocacao(QTableWidget):
         self.horizontalHeader().setSectionResizeMode(0,QHeaderView.Stretch)
         self.horizontalHeader().setSectionResizeMode(1,QHeaderView.Stretch)
         self.horizontalHeader().setSectionResizeMode(2,QHeaderView.Stretch)
-        self.horizontalHeader().setSectionResizeMode(3,QHeaderView.Stretch)
-        self.horizontalHeader().setSectionResizeMode(4,QHeaderView.Stretch)
         # Alterna as cores das linhas
         self.setAlternatingRowColors(True)
         # desabilita a edição dos campos
@@ -31,48 +28,44 @@ class TableLocacao(QTableWidget):
         self.setSelectionBehavior(QTableWidget.SelectRows)
         # evento ao selecionar uma linha
         self.clicked.connect(self.on_click)
-    
+
     def carregaDados(self):
-        self.lista_locacoes = Locacoes.getLocacoes()
+        self.lista_seguros = Seguros.getSeguros()
         # necessário marcar a linha como a primeira para sobreescrever os dados da tabela
         self.setRowCount(0)
-        for locacao in self.lista_locacoes:
-            self._addRow(locacao)
-
-    def _addRow(self, locacao):
+        for seguro in self.lista_seguros:
+            self._addRow(seguro)
+    
+    def _addRow(self, seguro):
         rowCount = self.rowCount()
         self.insertRow(rowCount)
         # fixa a linha e muda a coluna conforme os valores
-        id_id = QTableWidgetItem(str(locacao.id))
-        id_id_res = QTableWidgetItem(str(locacao.id_res))
-        id_kmEstim = QTableWidgetItem(str(locacao.kmEstim))
-        id_valorLoc = QTableWidgetItem(str("%.2f" %locacao.valorLoc))
-        id_status = QTableWidgetItem(locacao.status)
+        id_item = QTableWidgetItem(str(seguro.id))
+        id_ident = QTableWidgetItem(seguro.ident)
+        id_valor = QTableWidgetItem(str("%.2f" %seguro.valor))
         # insere os itens na tabela
-        self.setItem(rowCount, 0, id_id)
-        self.setItem(rowCount, 1, id_id_res)
-        self.setItem(rowCount, 2, id_kmEstim)
-        self.setItem(rowCount, 3, id_valorLoc)
-        self.setItem(rowCount, 4, id_status)
+        self.setItem(rowCount, 0, id_item)
+        self.setItem(rowCount, 1, id_ident)
+        self.setItem(rowCount, 2, id_valor)
 
     def on_click(self):
         selected_row = self.currentRow()
         id = self.item(selected_row, 0).text()
-        locacao = Locacoes.getLocacao(id)
-        self.parent.insereLocacao(locacao)
+        seguro = Seguros.getSeguro(id)
+        self.parent.insereSeguro(seguro)
     
     # funções para adicionar no banco de dados
-    def add(self, locacao):
-        Locacoes.addLocacao(locacao)
+    def add(self, seguro):
+        Seguros.addSeguro(seguro)
         # Carrega os dados do banco
         self.carregaDados()
 
-    def update(self, locacao):
-        Locacoes.editLocacao(locacao)
+    def update(self, seguro):
+        Seguros.editSeguro(seguro)
         # Carrega os dados do banco
         self.carregaDados()
 
-    def delete(self, locacao):
-        Locacoes.delLocacao(locacao.id)
+    def delete(self, seguro):
+        Seguros.delSeguro(seguro.id)
         # Carrega os dados do banco
         self.carregaDados()
