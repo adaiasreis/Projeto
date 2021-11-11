@@ -5,7 +5,7 @@ from PyQt5 import QtCore, uic
 from clas.locacao import Locacao as Loc
 
 import models.model_reserva as Reservas
-import models.model_tipoLoc as Tipos
+import models.model_plano as Planos
 
 class CadLocacao(QWidget):
     def __init__(self, reservaAtual, winReserva):
@@ -20,7 +20,6 @@ class CadLocacao(QWidget):
 
         self.locacaoAtual = None
         self.lista_reservas = []
-        self.lista_veiculos = []
 
         self.setEventos()
 
@@ -31,7 +30,7 @@ class CadLocacao(QWidget):
     def setEventos(self):
         self.b_locar.clicked.connect(self.addLocacao)
         self.b_limpar.clicked.connect(self.limparCampos)
-        self.b_ok.clicked.connect(self.calculaKm)
+        self.b_ok.clicked.connect(self.carregaDadosPlanos)
 
     def carregaDadosReservas(self):
         self.lista_reservas = Reservas.getReservas()
@@ -39,6 +38,13 @@ class CadLocacao(QWidget):
         for r in self.lista_reservas:
             lista_combo.append(str(r.id))
         self.campId.addItems(lista_combo)
+
+    def carregaDadosPlanos(self, tipoLoc):
+        tipoLoc = self.winReserva.comboTipos.currentText()
+        self.lista_planos = Planos.getPlanosCateg(tipoLoc)
+        for p in self.lista_planos:
+            valorkm = p.valorKmEst
+            self.calculaKm(valorkm)
 
     def setEventosCheckBox(self):
         self.ch_mec.stateChanged.connect(self.checkBoxSeg)
@@ -91,55 +97,20 @@ class CadLocacao(QWidget):
         self.b_limpar.setEnabled(True)
         self.campId_reserva.setEnabled(False)
 
-    def calculaKm(self):
-        self.tipo = self.reservaAtual.tipo
-        print(self.tipo)
+    def calculaKm(self, valor):
         pagarKm = 0.0
         kmEstim = self.campKmEstim.text()
-        if self.tipo == "A - Econômico":
-            valorKm = 0.45
-
-            if valorKm == "":
-                valorKm == 0.0
-            else:
-                valorKm == float(valorKm)
-            
-            if kmEstim == "":
-                kmEstim == 0.0
-            else: 
-                kmEstim == float(kmEstim)
-
-                pagarKm = float(valorKm) * float(kmEstim)
-
-        elif self.tipo == "B - Conforto":
-            valorKm = 0.69
-
-            if valorKm == "":
-                valorKm == 0.0
-            else:
-                valorKm == float(valorKm)
-            
-            if kmEstim == "":
-                kmEstim == 0.0
-            else: 
-                kmEstim == float(kmEstim)
-
-                pagarKm = float(valorKm) * float(kmEstim)
+        if valor == "":
+            valor == 0.0
         else:
-            self.tipo == "B - Conforto"
-            valorKm = 1.77
+            valor == float(valor)
 
-            if valorKm == "":
-                valorKm == 0.0
-            else:
-                valorKm == float(valorKm)
-            
-            if kmEstim == "":
-                kmEstim == 0.0
-            else: 
-                kmEstim == float(kmEstim)
+        if kmEstim == "":
+            kmEstim == 0.0
+        else: 
+            kmEstim == float(kmEstim)
 
-                pagarKm = float(valorKm) * float(kmEstim)
+            pagarKm = float(valor) * float(kmEstim)
 
         self.campValor.setText(str("%.2f" %pagarKm))
         self.calculaPagar(pagarKm)
@@ -159,8 +130,8 @@ class CadLocacao(QWidget):
             valorPag = pagarKm + float(valorIn)
             self.campPagar.setText(str("%.2f" %valorPag))
 
-    def checkBoxSeg(self, state):
-        if self.ch_mec.isChecked():          
+    def checkBoxSeg(self):
+        if self.ch_mec.isChecked():
             print("Marcou Mecânico")
 
         if self.ch_perdaT.isChecked():

@@ -90,9 +90,9 @@ class CadPlanos(QWidget):
         self.camp_valDia.setText(str("%.2f" %plano.valorDia))
         self.camp_valEst.setText(str("%.2f" %plano.valorKmEst))
         self.camp_valExced.setText(str("%.2f" %plano.valorKmExced))
-        self.camp_bValDia.setText(str("%.2f" %plano.b_valorDia))
-        self.camp_bValEst.setText(str("%.2f" %plano.b_valorEst))
-        self.camp_bValExced.setText(str("%.2f" %plano.b_valorExced))
+        self.camp_bValDia.setText(str(plano.b_valorDia))
+        self.camp_bValEst.setText(str(plano.b_valorEst))
+        self.camp_bValExced.setText(str(plano.b_valorExced))
 
         self.b_novo.setText("Atualizar")
         self.b_excluir.setEnabled(True)

@@ -22,6 +22,27 @@ def getPlanos():
     conn.close()
     return lista_planos
 
+def getPlanosCateg(tipoLoc):
+    conn = db.connect_db()
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM Planos WHERE tipoLoc=?",[tipoLoc])
+    lista_planos = []
+    for p in cursor.fetchall():
+        id = p[0]
+        ident = p[1]
+        valor = p[2]
+        tipoLoc = p[3]
+        valorDia = p[4]
+        valorKmEst = p[5]
+        valorKmExced = p[6]
+        b_valorDia = p[7]
+        b_valorEst = p[8]
+        b_valorExced = p[9]
+        nova = Plano(id, ident, valor, tipoLoc, valorDia, valorKmEst, valorKmExced, b_valorDia, b_valorEst, b_valorExced)
+        lista_planos.append(nova)
+    conn.close()
+    return lista_planos
+
 def getPlano(id):
     conn = db.connect_db()
     cursor = conn.cursor()
